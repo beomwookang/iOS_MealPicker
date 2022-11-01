@@ -9,6 +9,7 @@ import Foundation
 
 struct FoodDetail {
     var name: String
+    var foodID: Int
     var country: CountryType
     var isSpicy: SpicyType
     var isHot: Bool
@@ -20,15 +21,16 @@ struct FoodDetail {
     var seafoodType: SeafoodType
     init(dataItem: [String]) {
         self.name = dataItem[0]
-        self.country = CountryType(rawValue: dataItem[1])!
-        self.isSpicy = SpicyType(rawValue: dataItem[2])!
-        self.isHot = dataItem[3] == "true" ? true : false
-        self.isSoup = dataItem[4] == "true" ? true : false
-        self.carbType = CarbType(rawValue: dataItem[5])!
-        self.hasMeat = dataItem[6] == "true" ? true : false
-        self.meatType = MeatType(rawValue: dataItem[7])!
-        self.hasSeafood = dataItem[8] == "true" ? true : false
-        self.seafoodType = SeafoodType(rawValue: dataItem[9])!
+        self.foodID = Int(dataItem[1])!
+        self.country = CountryType(rawValue: dataItem[2])!
+        self.isSpicy = SpicyType(rawValue: dataItem[3])!
+        self.isHot = dataItem[4] == "true" ? true : false
+        self.isSoup = dataItem[5] == "true" ? true : false
+        self.carbType = CarbType(rawValue: dataItem[6])!
+        self.hasMeat = dataItem[7] == "true" ? true : false
+        self.meatType = MeatType(rawValue: dataItem[8])!
+        self.hasSeafood = dataItem[9] == "true" ? true : false
+        self.seafoodType = SeafoodType(rawValue: dataItem[10])!
     }
 }
 
@@ -64,4 +66,16 @@ enum SeafoodType: String {
     case fish
     case others
     case noSeafood = "NA"
+}
+
+enum OptionType {
+    case country
+    case isSpicy
+    case isHot
+    case isSoup
+    case carbType
+    case hasMeat
+    case meatType
+    case hasSeafood
+    case seafoodType
 }

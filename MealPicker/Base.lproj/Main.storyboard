@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="21225" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="bq6-zV-pcu">
-    <device id="retina6_0" orientation="portrait" appearance="light"/>
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21207"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
@@ -13,7 +13,7 @@
             <objects>
                 <navigationController id="bq6-zV-pcu" sceneMemberID="viewController">
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="2G9-kI-jlk">
-                        <rect key="frame" x="0.0" y="47" width="390" height="44"/>
+                        <rect key="frame" x="0.0" y="48" width="414" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <connections>
@@ -27,44 +27,45 @@
         <!--View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
                 <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="MealPicker" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
-                        <rect key="frame" x="0.0" y="0.0" width="390" height="844"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="BackgroundImage" translatesAutoresizingMaskIntoConstraints="NO" id="UGz-Vt-XR0">
-                                <rect key="frame" x="0.0" y="0.0" width="390" height="844"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="BackgroundImage" translatesAutoresizingMaskIntoConstraints="NO" id="UGz-Vt-XR0">
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="862"/>
                             </imageView>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="6U7-gn-XPF">
-                                <rect key="frame" x="80" y="251" width="230" height="379"/>
+                                <rect key="frame" x="80" y="242" width="254" height="361.5"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" semanticContentAttribute="spatial" horizontalHuggingPriority="249" verticalHuggingPriority="249" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="CI7-KE-4IR">
-                                        <rect key="frame" x="0.0" y="0.0" width="230" height="254.33333333333334"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="254" height="281"/>
                                         <constraints>
                                             <constraint firstAttribute="width" secondItem="CI7-KE-4IR" secondAttribute="height" multiplier="0.9" constant="1" id="6Cg-JW-rEa"/>
                                         </constraints>
                                         <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <state key="normal" title="Button"/>
-                                        <buttonConfiguration key="configuration" style="plain" image="MainBibimbab" imagePlacement="top" title="메뉴 정하기!" imagePadding="25" titleAlignment="automatic">
+                                        <buttonConfiguration key="configuration" style="plain" image="MainBibimbab" imagePlacement="top" title="메뉴 정하기!" imagePadding="15" titleAlignment="automatic">
                                             <fontDescription key="titleFontDescription" type="system" weight="heavy" pointSize="25"/>
                                         </buttonConfiguration>
+                                        <connections>
+                                            <segue destination="iZU-ML-QBR" kind="show" id="8nl-M7-QaS"/>
+                                        </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" horizontalCompressionResistancePriority="749" verticalCompressionResistancePriority="749" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cZi-mG-Lia">
-                                        <rect key="frame" x="50" y="274.33333333333337" width="130" height="104.66666666666669"/>
+                                        <rect key="frame" x="40" y="301" width="174" height="60.5"/>
                                         <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <state key="normal" title="Button"/>
-                                        <buttonConfiguration key="configuration" style="plain" image="ShuffleArrow" imagePlacement="top" title="랜덤 선택">
-                                            <preferredSymbolConfiguration key="preferredSymbolConfigurationForImage" scale="small"/>
-                                            <fontDescription key="titleFontDescription" type="system" weight="semibold" pointSize="13"/>
+                                        <buttonConfiguration key="configuration" style="plain" image="shuffle" catalog="system" imagePlacement="top" title="랜덤 선택" imagePadding="8">
+                                            <preferredSymbolConfiguration key="preferredSymbolConfigurationForImage" configurationType="pointSize" pointSize="20" scale="large"/>
+                                            <fontDescription key="titleFontDescription" type="system" weight="semibold" pointSize="12"/>
                                         </buttonConfiguration>
                                     </button>
                                 </subviews>
                                 <constraints>
-                                    <constraint firstAttribute="trailing" secondItem="cZi-mG-Lia" secondAttribute="trailing" constant="50" id="2FT-wp-Lwf"/>
+                                    <constraint firstAttribute="trailing" secondItem="cZi-mG-Lia" secondAttribute="trailing" constant="40" id="2FT-wp-Lwf"/>
                                     <constraint firstAttribute="trailing" secondItem="CI7-KE-4IR" secondAttribute="trailing" id="7fA-8n-bLZ"/>
-                                    <constraint firstItem="cZi-mG-Lia" firstAttribute="leading" secondItem="6U7-gn-XPF" secondAttribute="leading" constant="50" id="9kC-gk-C1f"/>
+                                    <constraint firstItem="cZi-mG-Lia" firstAttribute="leading" secondItem="6U7-gn-XPF" secondAttribute="leading" constant="40" id="9kC-gk-C1f"/>
                                     <constraint firstItem="CI7-KE-4IR" firstAttribute="top" secondItem="6U7-gn-XPF" secondAttribute="top" id="Zn3-X9-sWD"/>
                                     <constraint firstItem="cZi-mG-Lia" firstAttribute="top" secondItem="CI7-KE-4IR" secondAttribute="bottom" constant="20" id="asw-q3-yDF"/>
                                     <constraint firstAttribute="bottom" secondItem="cZi-mG-Lia" secondAttribute="bottom" id="gGV-qW-ZD7"/>
@@ -75,16 +76,20 @@
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="6U7-gn-XPF" secondAttribute="bottom" constant="180" id="KmW-We-JKD"/>
-                            <constraint firstItem="6U7-gn-XPF" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="160" id="gtd-fA-VPx"/>
+                            <constraint firstItem="6U7-gn-XPF" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="150" id="2LF-kl-bMG"/>
+                            <constraint firstItem="UGz-Vt-XR0" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" id="4bJ-Ip-4lM"/>
+                            <constraint firstItem="UGz-Vt-XR0" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="8Zt-EA-kAt"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="UGz-Vt-XR0" secondAttribute="trailing" id="ZKj-JT-0T6"/>
+                            <constraint firstItem="6U7-gn-XPF" firstAttribute="height" relation="lessThanOrEqual" secondItem="6Tk-OE-BBY" secondAttribute="height" multiplier="0.6" constant="150" id="bOC-V9-yIg"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="6U7-gn-XPF" secondAttribute="trailing" constant="80" id="hpb-Fh-ZKx"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="UGz-Vt-XR0" secondAttribute="bottom" id="n0h-qk-RVb"/>
                             <constraint firstItem="6U7-gn-XPF" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="80" id="xNv-yu-QEZ"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="ik7-AY-FHh">
                         <barButtonItem key="rightBarButtonItem" id="t5E-fa-VQy">
                             <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="trailing" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" id="lcU-m5-211">
-                                <rect key="frame" x="288" y="5" width="86" height="34.333333333333336"/>
+                                <rect key="frame" x="308" y="5" width="86" height="34"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <state key="normal" title="Button"/>
@@ -95,17 +100,68 @@
                     <connections>
                         <outlet property="mainBeginButton" destination="CI7-KE-4IR" id="M9I-wI-lNo"/>
                         <outlet property="mainInfoButton" destination="lcU-m5-211" id="cPS-Iy-GW6"/>
+                        <outlet property="mainRandomButton" destination="cZi-mG-Lia" id="GWf-y0-wNs"/>
                     </connections>
                 </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-718.46153846153845" y="-78.199052132701425"/>
         </scene>
+        <!--Two Options View Controller-->
+        <scene sceneID="0mF-83-flI">
+            <objects>
+                <viewController id="iZU-ML-QBR" customClass="TwoOptionsViewController" customModule="MealPicker" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="e7V-iL-q5x">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="BackgroundImage" translatesAutoresizingMaskIntoConstraints="NO" id="ZGh-cV-wj4">
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                            </imageView>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="30" translatesAutoresizingMaskIntoConstraints="NO" id="AdZ-G1-fBJ">
+                                <rect key="frame" x="31" y="178.5" width="352" height="539"/>
+                                <subviews>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Hm4-Fc-yAW">
+                                        <rect key="frame" x="0.0" y="0.0" width="352" height="254.5"/>
+                                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                    </view>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="yBN-4J-0ZJ">
+                                        <rect key="frame" x="0.0" y="284.5" width="352" height="254.5"/>
+                                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                    </view>
+                                </subviews>
+                            </stackView>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="aai-4z-xi9"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="AdZ-G1-fBJ" firstAttribute="height" secondItem="aai-4z-xi9" secondAttribute="height" multiplier="0.7" id="1Hf-Ef-92X"/>
+                            <constraint firstItem="AdZ-G1-fBJ" firstAttribute="width" secondItem="aai-4z-xi9" secondAttribute="width" multiplier="0.85" id="1LP-NB-qQ4"/>
+                            <constraint firstItem="ZGh-cV-wj4" firstAttribute="leading" secondItem="aai-4z-xi9" secondAttribute="leading" id="7sm-tx-fu2"/>
+                            <constraint firstItem="AdZ-G1-fBJ" firstAttribute="centerX" secondItem="e7V-iL-q5x" secondAttribute="centerX" id="DyM-sU-TfI"/>
+                            <constraint firstItem="AdZ-G1-fBJ" firstAttribute="centerY" secondItem="e7V-iL-q5x" secondAttribute="centerY" id="Mop-19-6U0"/>
+                            <constraint firstAttribute="bottom" secondItem="ZGh-cV-wj4" secondAttribute="bottom" id="NFX-ja-HcE"/>
+                            <constraint firstItem="ZGh-cV-wj4" firstAttribute="trailing" secondItem="aai-4z-xi9" secondAttribute="trailing" id="hTZ-9x-ruC"/>
+                            <constraint firstItem="ZGh-cV-wj4" firstAttribute="top" secondItem="e7V-iL-q5x" secondAttribute="top" id="ks3-K4-aGy"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" id="bIX-rA-e3R"/>
+                    <connections>
+                        <outlet property="firstOptionView" destination="Hm4-Fc-yAW" id="I0b-Yx-Od6"/>
+                        <outlet property="secondOptionView" destination="yBN-4J-0ZJ" id="PXx-ET-QOG"/>
+                        <outlet property="stackView" destination="AdZ-G1-fBJ" id="6L9-PI-84u"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="THo-lk-d2f" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="160.86956521739131" y="-341.51785714285711"/>
+        </scene>
     </scenes>
     <resources>
-        <image name="BackgroundImage" width="426.66665649414062" height="319.66665649414062"/>
-        <image name="MainBibimbab" width="170.66667175292969" height="170.66667175292969"/>
-        <image name="ShuffleArrow" width="170.66667175292969" height="170.66667175292969"/>
+        <image name="BackgroundImage" width="426.5" height="319.5"/>
+        <image name="MainBibimbab" width="170.5" height="170.5"/>
         <image name="info.circle" catalog="system" width="128" height="123"/>
+        <image name="shuffle" catalog="system" width="128" height="95"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>

@@ -2,6 +2,9 @@ disabled_rules: #rules identifiers to exclude from running
   - line_length
   - control_statement
   - todo
+  - unused_optional_binding
+  - trailing_whitespace
+  - comment_spacing
 
 identifier_name:
   allowed_symbols: "_"
