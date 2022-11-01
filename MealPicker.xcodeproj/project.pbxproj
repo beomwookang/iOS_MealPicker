@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		A856760D290D05E2007F8861 /* FoodDetail.swift in Sources */ = {isa = PBXBuildFile; fileRef = A856760C290D05E2007F8861 /* FoodDetail.swift */; };
+		A86C7E5F290F913300B971F8 /* FoodList.csv in Resources */ = {isa = PBXBuildFile; fileRef = A86C7E5E290F913300B971F8 /* FoodList.csv */; };
+		A883B7B72910EAE90008808B /* .swiftlint.yml in Resources */ = {isa = PBXBuildFile; fileRef = A883B7B62910EAE90008808B /* .swiftlint.yml */; };
 		A8FD5A56290A5AC900BC4033 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8FD5A55290A5AC900BC4033 /* AppDelegate.swift */; };
 		A8FD5A58290A5AC900BC4033 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8FD5A57290A5AC900BC4033 /* SceneDelegate.swift */; };
 		A8FD5A5A290A5AC900BC4033 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8FD5A59290A5AC900BC4033 /* ViewController.swift */; };
@@ -16,6 +19,9 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		A856760C290D05E2007F8861 /* FoodDetail.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FoodDetail.swift; sourceTree = "<group>"; };
+		A86C7E5E290F913300B971F8 /* FoodList.csv */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = FoodList.csv; sourceTree = "<group>"; };
+		A883B7B62910EAE90008808B /* .swiftlint.yml */ = {isa = PBXFileReference; lastKnownFileType = text.yaml; path = .swiftlint.yml; sourceTree = "<group>"; };
 		A8FD5A52290A5AC900BC4033 /* MealPicker.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MealPicker.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A8FD5A55290A5AC900BC4033 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		A8FD5A57290A5AC900BC4033 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -56,6 +62,7 @@
 		A8FD5A54290A5AC900BC4033 /* MealPicker */ = {
 			isa = PBXGroup;
 			children = (
+				A86C7E5E290F913300B971F8 /* FoodList.csv */,
 				A8FD5A55290A5AC900BC4033 /* AppDelegate.swift */,
 				A8FD5A57290A5AC900BC4033 /* SceneDelegate.swift */,
 				A8FD5A59290A5AC900BC4033 /* ViewController.swift */,
@@ -63,6 +70,8 @@
 				A8FD5A5E290A5ACA00BC4033 /* Assets.xcassets */,
 				A8FD5A60290A5ACA00BC4033 /* LaunchScreen.storyboard */,
 				A8FD5A63290A5ACA00BC4033 /* Info.plist */,
+				A856760C290D05E2007F8861 /* FoodDetail.swift */,
+				A883B7B62910EAE90008808B /* .swiftlint.yml */,
 			);
 			path = MealPicker;
 			sourceTree = "<group>";
@@ -74,6 +83,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = A8FD5A66290A5ACA00BC4033 /* Build configuration list for PBXNativeTarget "MealPicker" */;
 			buildPhases = (
+				A86C7E6C2910E96E00B971F8 /* ShellScript */,
 				A8FD5A4E290A5AC900BC4033 /* Sources */,
 				A8FD5A4F290A5AC900BC4033 /* Frameworks */,
 				A8FD5A50290A5AC900BC4033 /* Resources */,
@@ -125,13 +135,36 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A883B7B72910EAE90008808B /* .swiftlint.yml in Resources */,
 				A8FD5A62290A5ACA00BC4033 /* LaunchScreen.storyboard in Resources */,
 				A8FD5A5F290A5ACA00BC4033 /* Assets.xcassets in Resources */,
+				A86C7E5F290F913300B971F8 /* FoodList.csv in Resources */,
 				A8FD5A5D290A5AC900BC4033 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		A86C7E6C2910E96E00B971F8 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			alwaysOutOfDate = 1;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "# Type a script or drag a script file from your workspace to insert its path.\nexport PATH=\"$PATH:/opt/homebrew/bin\"\nif which swiftlint >/dev/null; then\n    swiftlint\nelse\n    echo \"wearning: SwiftLint not installed, download from https://github.com/realm/SwiftLint\"\nfi\n";
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		A8FD5A4E290A5AC900BC4033 /* Sources */ = {
@@ -140,6 +173,7 @@
 			files = (
 				A8FD5A5A290A5AC900BC4033 /* ViewController.swift in Sources */,
 				A8FD5A56290A5AC900BC4033 /* AppDelegate.swift in Sources */,
+				A856760D290D05E2007F8861 /* FoodDetail.swift in Sources */,
 				A8FD5A58290A5AC900BC4033 /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

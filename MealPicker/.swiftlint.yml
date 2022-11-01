@@ -1,0 +1,19 @@
+disabled_rules: #rules identifiers to exclude from running
+  - line_length
+  - control_statement
+  - todo
+
+identifier_name:
+  allowed_symbols: "_"
+  min_length: 1
+
+opt_in_rules:
+  # instead of .count==0 use .isEmpty
+  - empty_count
+  # instead of empty string use .isEmpty for comparison
+  - empty_string
+  
+excluded:
+  - Pods
+  - AppDelegate.swift
+  - SceneDelegate.swift
