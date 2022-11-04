@@ -10,13 +10,14 @@ import UIKit
 class LoadingViewController: UIViewController {
     @IBOutlet weak var loadingLabel: UILabel!
     
+    var foodList: [FoodDetail]?
     var isRandom: Bool = false
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.configureLabel()
+        self.configureView()
     }
-
+    
     private func configureLabel() {
         if self.isRandom {
             loadingLabel.font = UIFont.systemFont(ofSize: 35, weight: .bold)
@@ -27,14 +28,29 @@ class LoadingViewController: UIViewController {
         }
     }
     
-    private func loadResult() {
+    private func configureTransition() {
+        let transition = CATransition()
+        transition.duration = 0.5
+        transition.type = CATransitionType.push
+        transition.subtype = CATransitionSubtype.fromRight
+        transition.timingFunction = CAMediaTimingFunction(name: CAMediaTimingFunctionName.easeInEaseOut)
+        self.view.window?.layer.add(transition, forKey: kCATransition)
+    }
+    
+    private func configureView() {
+        self.configureLabel()
+    }
+    
+    private func loadResult(_ foodList: [FoodDetail]) {
         guard let viewController = self.storyboard?.instantiateViewController(withIdentifier: "ResultViewController") as? ResultViewController else { return }
+        viewController.foodList = foodList
         viewController.modalPresentationStyle = .fullScreen
-        viewController.modalTransitionStyle = .flipHorizontal
-        self.present(viewController, animated: true)
+        self.configureTransition()
+        self.present(viewController, animated: false)
     }
     
     @IBAction func tabShowResult(_ sender: UIButton) {
-        self.loadResult()
+        guard let foodList = self.foodList else { return }
+        self.loadResult(foodList)
     }
 }

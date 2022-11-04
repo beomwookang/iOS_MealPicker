@@ -17,6 +17,7 @@ class TwoOptionsViewController: UIViewController {
     @IBOutlet weak var progressBarView: UIProgressView!
     
     var optionType: OptionType?
+    var foodList: [FoodDetail]?
     
     override func viewDidLoad() {
         super.viewDidLoad()

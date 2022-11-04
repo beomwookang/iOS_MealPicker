@@ -18,6 +18,11 @@ class ViewController: UIViewController {
         self.loadFoodsFromCSV()
         self.configureView()
     }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        self.loadFoodsFromCSV()
+    }
 
     private func parseCSVAt(url: URL) {
         do {
@@ -35,6 +40,7 @@ class ViewController: UIViewController {
     }
     
     private func loadFoodsFromCSV() {
+        self.foodList = []
         let path = Bundle.main.path(forResource: "FoodList", ofType: "csv")!
         parseCSVAt(url: URL(fileURLWithPath: path))
     }
@@ -55,6 +61,15 @@ class ViewController: UIViewController {
         self.configureButtonShadow(self.mainBeginButton, CGSize(width: 8, height: 8), CGFloat(6), 0.25)
         self.configureButtonShadow(self.mainRandomButton, CGSize(width: 6, height: 6), CGFloat(5), 0.25)
     }
+    
+    private func configureTransition() {
+        let transition = CATransition()
+        transition.duration = 0.5
+        transition.type = CATransitionType.push
+        transition.subtype = CATransitionSubtype.fromRight
+        transition.timingFunction = CAMediaTimingFunction(name: CAMediaTimingFunctionName.easeInEaseOut)
+        self.view.window?.layer.add(transition, forKey: kCATransition)
+    }
 
     private func configureView() {
         self.configureButtons()
@@ -62,12 +77,18 @@ class ViewController: UIViewController {
 
     @IBAction func beginButtonTap(_ sender: UIButton) {
         guard let viewController = self.storyboard?.instantiateViewController(withIdentifier: "TwoOptionsViewController") as? TwoOptionsViewController else { return }
+        viewController.foodList = self.foodList
         viewController.modalPresentationStyle = .fullScreen
         viewController.modalTransitionStyle = .crossDissolve
         self.present(viewController, animated: true)
-//        self.navigationController?.pushViewController(viewController, animated: true)
     }
     
     @IBAction func randomButtonTap(_ sender: UIButton) {
+        guard let viewController = self.storyboard?.instantiateViewController(withIdentifier: "LoadingViewController") as? LoadingViewController else { return }
+        viewController.isRandom = true
+        viewController.foodList = self.foodList
+        viewController.modalPresentationStyle = .fullScreen
+        self.configureTransition()
+        self.present(viewController, animated: false)
     }
 }

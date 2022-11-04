@@ -314,7 +314,7 @@
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="메뉴 고르는 중" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FHA-nx-tLU">
-                                <rect key="frame" x="75.5" y="309.5" width="224.5" height="48"/>
+                                <rect key="frame" x="75" y="309.5" width="225" height="48"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="40"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -370,7 +370,7 @@
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="fid@1" translatesAutoresizingMaskIntoConstraints="NO" id="lKX-xQ-hSa">
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="lKX-xQ-hSa">
                                         <rect key="frame" x="0.0" y="56" width="244" height="243.5"/>
                                         <constraints>
                                             <constraint firstAttribute="width" secondItem="lKX-xQ-hSa" secondAttribute="height" id="acQ-fe-fAs"/>
@@ -441,6 +441,7 @@
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="rerollButton" destination="gLk-Jb-7bs" id="wmo-bz-kfp"/>
                         <outlet property="resultImageView" destination="lKX-xQ-hSa" id="QCo-a9-lxo"/>
                         <outlet property="resultLabel" destination="Yod-cl-4A1" id="cGN-BD-Ufa"/>
                     </connections>
@@ -693,7 +694,6 @@
         <image name="BackgroundImage" width="426.5" height="319.5"/>
         <image name="MainBibimbab" width="170.5" height="170.5"/>
         <image name="MapMarker" width="24" height="24"/>
-        <image name="fid@1" width="140" height="133"/>
         <image name="info.circle" catalog="system" width="128" height="123"/>
         <image name="shuffle" catalog="system" width="128" height="95"/>
         <systemColor name="systemBackgroundColor">

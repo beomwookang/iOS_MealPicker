@@ -19,6 +19,22 @@ struct FoodDetail {
     var meatType: MeatType
     var hasSeafood: Bool
     var seafoodType: SeafoodType
+    
+    init() {
+        //기본값은 한국인의 소울 푸드: 김밥 ^ㅇ^
+        self.name = "김밥"
+        self.foodID = 111
+        self.country = .korean
+        self.isSpicy = .notSpicy
+        self.isHot = false
+        self.isSoup = false
+        self.carbType = .rice
+        self.hasMeat = false
+        self.meatType = .noMeat
+        self.hasSeafood = false
+        self.seafoodType = .noSeafood
+    }
+    
     init(dataItem: [String]) {
         self.name = dataItem[0]
         self.foodID = Int(dataItem[1])!
