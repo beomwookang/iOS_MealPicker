@@ -60,4 +60,14 @@ class ViewController: UIViewController {
         self.configureButtons()
     }
 
+    @IBAction func beginButtonTap(_ sender: UIButton) {
+        guard let viewController = self.storyboard?.instantiateViewController(withIdentifier: "TwoOptionsViewController") else { return }
+        viewController.modalPresentationStyle = .fullScreen
+        viewController.modalTransitionStyle = .crossDissolve
+        self.present(viewController, animated: true)
+//        self.navigationController?.pushViewController(viewController, animated: true)
+    }
+    
+    @IBAction func randomButtonTap(_ sender: UIButton) {
+    }
 }

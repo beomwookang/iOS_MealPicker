@@ -11,8 +11,10 @@ class TwoOptionsViewController: UIViewController {
     @IBOutlet weak var stackView: UIStackView!
     @IBOutlet weak var firstOptionView: UIView!
     @IBOutlet weak var secondOptionView: UIView!
-    
-    var secondView: UIView?
+    @IBOutlet weak var noMatterButton: UIButton!
+    @IBOutlet weak var timeLimitBar: UIProgressView!
+    @IBOutlet weak var progressBar: UIView!
+    @IBOutlet weak var progressBarView: UIProgressView!
     
     var optionType: OptionType?
     
@@ -68,7 +70,15 @@ class TwoOptionsViewController: UIViewController {
         ])
     }
     
+    private func configureNoMatter() {
+        self.noMatterButton.titleLabel?.layer.shadowColor = UIColor.gray.cgColor
+        self.noMatterButton.titleLabel?.layer.shadowOffset = CGSize(width: 5, height: 5)
+        self.noMatterButton.titleLabel?.layer.shadowRadius = 6
+        self.noMatterButton.titleLabel?.layer.shadowOpacity = 0.8
+    }
+    
     private func configureView() {
+        self.navigationItem.hidesBackButton = true
         self.configureView(view: self.firstOptionView,
                            touchHandler: #selector(firstOptionDidTap),
                            optionImageName: "isHot_Hot",
@@ -77,6 +87,12 @@ class TwoOptionsViewController: UIViewController {
                            touchHandler: #selector(secondOptionDidTap),
                            optionImageName: "isHot_NotHot",
                            optionLabel: "시원한 음식")
+        self.configureNoMatter()
+        self.progressBar.layer.cornerRadius = 3
+        self.progressBar.layer.borderColor = UIColor.black.cgColor
+        self.progressBar.layer.borderWidth = 2
+        //self.progressBarView.transform = self.progressBarView.transform.scaledBy(x: 1, y: 5)
+        self.timeLimitBar.transform = self.timeLimitBar.transform.scaledBy(x: 1, y: 2.5)
     }
     
     @objc func firstOptionDidTap() {
@@ -85,5 +101,9 @@ class TwoOptionsViewController: UIViewController {
     
     @objc func secondOptionDidTap() {
         print("Tapped Second")
+    }
+    
+    @IBAction func noMatterButtonTap(_ sender: UIButton) {
+        print("no matter")
     }
 }
