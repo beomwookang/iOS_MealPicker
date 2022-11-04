@@ -91,12 +91,15 @@ class TwoOptionsViewController: UIViewController {
         self.progressBar.layer.cornerRadius = 3
         self.progressBar.layer.borderColor = UIColor.black.cgColor
         self.progressBar.layer.borderWidth = 2
-        //self.progressBarView.transform = self.progressBarView.transform.scaledBy(x: 1, y: 5)
         self.timeLimitBar.transform = self.timeLimitBar.transform.scaledBy(x: 1, y: 2.5)
     }
     
     @objc func firstOptionDidTap() {
-        print("Tapped First")
+        //print("Tapped First")
+        guard let viewController = self.storyboard?.instantiateViewController(withIdentifier: "ThreeOptionsViewController") as? ThreeOptionsViewController else { return }
+        viewController.modalPresentationStyle = .fullScreen
+        viewController.modalTransitionStyle = .crossDissolve
+        self.present(viewController, animated: true)
     }
     
     @objc func secondOptionDidTap() {

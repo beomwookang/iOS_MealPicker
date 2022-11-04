@@ -61,7 +61,7 @@ class ViewController: UIViewController {
     }
 
     @IBAction func beginButtonTap(_ sender: UIButton) {
-        guard let viewController = self.storyboard?.instantiateViewController(withIdentifier: "TwoOptionsViewController") else { return }
+        guard let viewController = self.storyboard?.instantiateViewController(withIdentifier: "TwoOptionsViewController") as? TwoOptionsViewController else { return }
         viewController.modalPresentationStyle = .fullScreen
         viewController.modalTransitionStyle = .crossDissolve
         self.present(viewController, animated: true)
