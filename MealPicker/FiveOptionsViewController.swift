@@ -7,7 +7,7 @@
 
 import UIKit
 
-class FiveOptionsViewController: UIViewController {
+class FiveOptionsViewController: OptionViewController {
     @IBOutlet weak var stackView: UIStackView!
     @IBOutlet weak var firstOptionView: UIView!
     @IBOutlet weak var secondOptionView: UIView!
@@ -19,14 +19,16 @@ class FiveOptionsViewController: UIViewController {
     @IBOutlet weak var progressBar: UIView!
     @IBOutlet weak var progressBarView: UIProgressView!
     
-    var optionType: OptionType?
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         self.configureView()
+        guard let remainingOptionList = self.remainingOptionList else { return }
+        if remainingOptionList.isEmpty {
+            self.isLast = true
+        }
     }
     
-    private func configureView(view: UIView, touchHandler: Selector, optionImageName: String, optionLabel: String) {
+    private func configureOptionView(view: UIView, touchHandler: Selector, optionImageName: String, optionLabel: String) {
         view.layer.shadowColor = UIColor.black.cgColor
         view.layer.shadowOffset = CGSize(width: 8, height: 8)
         view.layer.shadowRadius = 5
@@ -82,23 +84,23 @@ class FiveOptionsViewController: UIViewController {
     
     private func configureView() {
         self.navigationItem.hidesBackButton = true
-        self.configureView(view: self.firstOptionView,
+        self.configureOptionView(view: self.firstOptionView,
                            touchHandler: #selector(firstOptionDidTap),
                            optionImageName: "country_Korean",
                            optionLabel: "한식")
-        self.configureView(view: self.secondOptionView,
+        self.configureOptionView(view: self.secondOptionView,
                            touchHandler: #selector(secondOptionDidTap),
                            optionImageName: "country_Western",
                            optionLabel: "양식")
-        self.configureView(view: self.thirdOptionView,
+        self.configureOptionView(view: self.thirdOptionView,
                            touchHandler: #selector(thirdOptionDidTap),
                            optionImageName: "country_Chinese",
                            optionLabel: "중식")
-        self.configureView(view: self.fourthOptionView,
+        self.configureOptionView(view: self.fourthOptionView,
                            touchHandler: #selector(fourthOptionDidTap),
                            optionImageName: "country_Japanese",
                            optionLabel: "일식")
-        self.configureView(view: self.fifthOptionView,
+        self.configureOptionView(view: self.fifthOptionView,
                            touchHandler: #selector(fifthOptionDidTap),
                            optionImageName: "country_Others",
                            optionLabel: "기타 국가")
@@ -110,27 +112,23 @@ class FiveOptionsViewController: UIViewController {
     }
     
     @objc func firstOptionDidTap() {
-        //print("Tapped First")
-        guard let viewController = self.storyboard?.instantiateViewController(withIdentifier: "LoadingViewController") as? LoadingViewController else { return }
-        viewController.modalPresentationStyle = .fullScreen
-        viewController.modalTransitionStyle = .flipHorizontal
-        self.present(viewController, animated: true)
+        self.handleOptionTap(optionIndex: 0)
     }
     
     @objc func secondOptionDidTap() {
-        print("Tapped Second")
+        self.handleOptionTap(optionIndex: 1)
     }
     
     @objc func thirdOptionDidTap() {
-        print("Tapped Third")
+        self.handleOptionTap(optionIndex: 2)
     }
     
     @objc func fourthOptionDidTap() {
-        print("Tapped Fourth")
+        self.handleOptionTap(optionIndex: 3)
     }
     
     @objc func fifthOptionDidTap() {
-        print("Tapped Fifth")
+        self.handleOptionTap(optionIndex: 4)
     }
     
     @IBAction func noMatterButtonTap(_ sender: UIButton) {

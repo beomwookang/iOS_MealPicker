@@ -7,7 +7,7 @@
 
 import UIKit
 
-class ThreeOptionsViewController: UIViewController {
+class ThreeOptionsViewController: OptionViewController {
     @IBOutlet weak var stackView: UIStackView!
     @IBOutlet weak var firstOptionView: UIView!
     @IBOutlet weak var secondOptionView: UIView!
@@ -17,14 +17,16 @@ class ThreeOptionsViewController: UIViewController {
     @IBOutlet weak var progressBar: UIView!
     @IBOutlet weak var progressBarView: UIProgressView!
     
-    var optionType: OptionType?
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         self.configureView()
+        guard let remainingOptionList = self.remainingOptionList else { return }
+        if remainingOptionList.isEmpty {
+            self.isLast = true
+        }
     }
     
-    private func configureView(view: UIView, touchHandler: Selector, optionImageName: String, optionLabel: String) {
+    private func configureOptionView(view: UIView, touchHandler: Selector, optionImageName: String, optionLabel: String) {
         view.layer.shadowColor = UIColor.black.cgColor
         view.layer.shadowOffset = CGSize(width: 8, height: 8)
         view.layer.shadowRadius = 5
@@ -80,15 +82,15 @@ class ThreeOptionsViewController: UIViewController {
     
     private func configureView() {
         self.navigationItem.hidesBackButton = true
-        self.configureView(view: self.firstOptionView,
+        self.configureOptionView(view: self.firstOptionView,
                            touchHandler: #selector(firstOptionDidTap),
                            optionImageName: "carbType_Rice",
                            optionLabel: "밥")
-        self.configureView(view: self.secondOptionView,
+        self.configureOptionView(view: self.secondOptionView,
                            touchHandler: #selector(secondOptionDidTap),
                            optionImageName: "carbType_Noodle",
                            optionLabel: "면")
-        self.configureView(view: self.thirdOptionView,
+        self.configureOptionView(view: self.thirdOptionView,
                            touchHandler: #selector(thirdOptionDidTap),
                            optionImageName: "carbType_Others",
                            optionLabel: "기타")
@@ -100,19 +102,15 @@ class ThreeOptionsViewController: UIViewController {
     }
     
     @objc func firstOptionDidTap() {
-        //print("Tapped First")
-        guard let viewController = self.storyboard?.instantiateViewController(withIdentifier: "FourOptionsViewController") as? FourOptionsViewController else { return }
-        viewController.modalPresentationStyle = .fullScreen
-        viewController.modalTransitionStyle = .crossDissolve
-        self.present(viewController, animated: true)
+        self.handleOptionTap(optionIndex: 0)
     }
     
     @objc func secondOptionDidTap() {
-        print("Tapped Second")
+        self.handleOptionTap(optionIndex: 1)
     }
     
     @objc func thirdOptionDidTap() {
-        print("Tapped Third")
+        self.handleOptionTap(optionIndex: 1)
     }
     
     @IBAction func noMatterButtonTap(_ sender: UIButton) {

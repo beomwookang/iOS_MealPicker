@@ -7,7 +7,7 @@
 
 import UIKit
 
-class TwoOptionsViewController: UIViewController {
+class TwoOptionsViewController: OptionViewController {
     @IBOutlet weak var stackView: UIStackView!
     @IBOutlet weak var firstOptionView: UIView!
     @IBOutlet weak var secondOptionView: UIView!
@@ -16,15 +16,16 @@ class TwoOptionsViewController: UIViewController {
     @IBOutlet weak var progressBar: UIView!
     @IBOutlet weak var progressBarView: UIProgressView!
     
-    var optionType: OptionType?
-    var foodList: [FoodDetail]?
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         self.configureView()
+        guard let remainingOptionList = self.remainingOptionList else { return }
+        if remainingOptionList.isEmpty {
+            self.isLast = true
+        }
     }
     
-    private func configureView(view: UIView, touchHandler: Selector, optionImageName: String, optionLabel: String) {
+    private func configureOptionView(view: UIView, touchHandler: Selector, optionImageName: String, optionLabel: String) {
         view.layer.shadowColor = UIColor.black.cgColor
         view.layer.shadowOffset = CGSize(width: 8, height: 8)
         view.layer.shadowRadius = 5
@@ -80,14 +81,22 @@ class TwoOptionsViewController: UIViewController {
     
     private func configureView() {
         self.navigationItem.hidesBackButton = true
-        self.configureView(view: self.firstOptionView,
+        guard let optionType = self.optionType else { return }
+        guard let validOptionIndices = self.validOptionIndices, validOptionIndices.count == 2 else { return }
+        guard let optionImageNames = optionCaseImageNames[optionType] else { return }
+        guard let optionNames = optionCaseNames[optionType] else { return }
+
+        let firstOptionIndex = validOptionIndices[0]
+        let secondOptionIndex = validOptionIndices[1]
+        
+        self.configureOptionView(view: self.firstOptionView,
                            touchHandler: #selector(firstOptionDidTap),
-                           optionImageName: "isHot_Hot",
-                           optionLabel: "따뜻한 음식")
-        self.configureView(view: self.secondOptionView,
+                           optionImageName: optionImageNames[firstOptionIndex],
+                           optionLabel: optionNames[firstOptionIndex])
+        self.configureOptionView(view: self.secondOptionView,
                            touchHandler: #selector(secondOptionDidTap),
-                           optionImageName: "isHot_NotHot",
-                           optionLabel: "시원한 음식")
+                           optionImageName: optionImageNames[secondOptionIndex],
+                           optionLabel: optionNames[secondOptionIndex])
         self.configureNoMatter()
         self.progressBar.layer.cornerRadius = 3
         self.progressBar.layer.borderColor = UIColor.black.cgColor
@@ -96,15 +105,11 @@ class TwoOptionsViewController: UIViewController {
     }
     
     @objc func firstOptionDidTap() {
-        //print("Tapped First")
-        guard let viewController = self.storyboard?.instantiateViewController(withIdentifier: "ThreeOptionsViewController") as? ThreeOptionsViewController else { return }
-        viewController.modalPresentationStyle = .fullScreen
-        viewController.modalTransitionStyle = .crossDissolve
-        self.present(viewController, animated: true)
+        self.handleOptionTap(optionIndex: 0)
     }
     
     @objc func secondOptionDidTap() {
-        print("Tapped Second")
+        self.handleOptionTap(optionIndex: 1)
     }
     
     @IBAction func noMatterButtonTap(_ sender: UIButton) {

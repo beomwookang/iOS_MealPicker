@@ -12,16 +12,25 @@ class ViewController: UIViewController {
     @IBOutlet weak var mainBeginButton: UIButton!
     @IBOutlet weak var mainRandomButton: UIButton!
     var foodList: [FoodDetail] = []
+    var remainingOptionList: [OptionType] = []
+    var nextOptionType: OptionType?
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.loadFoodsFromCSV()
         self.configureView()
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         self.loadFoodsFromCSV()
+        self.initializeFoodOptions()
+    }
+    
+    private func pickOptionType() {
+        if let index = self.remainingOptionList.indices.randomElement() {
+            let optionType = self.remainingOptionList.remove(at: index)
+            self.nextOptionType = optionType
+        }
     }
 
     private func parseCSVAt(url: URL) {
@@ -43,6 +52,18 @@ class ViewController: UIViewController {
         self.foodList = []
         let path = Bundle.main.path(forResource: "FoodList", ofType: "csv")!
         parseCSVAt(url: URL(fileURLWithPath: path))
+    }
+    
+    private func initializeFoodOptions() {
+        self.remainingOptionList = [
+            .country,
+            .isSpicy,
+            .isHot,
+            .isSoup,
+            .carbType,
+            .hasMeat,   //meatType as a consequence
+            .hasSeafood //seafoodType as a consequence
+        ]
     }
     
     private func configureButtonShadow(_ button: UIButton,
@@ -76,11 +97,30 @@ class ViewController: UIViewController {
     }
 
     @IBAction func beginButtonTap(_ sender: UIButton) {
-        guard let viewController = self.storyboard?.instantiateViewController(withIdentifier: "TwoOptionsViewController") as? TwoOptionsViewController else { return }
+        self.pickOptionType()
+        guard let nextOptionType = self.nextOptionType else { return }
+        let viewControllerID: String = {
+            switch optionCaseCount[nextOptionType]{
+            case 2:
+                return "TwoOptionsViewController"
+            case 3:
+                return "ThreeOptionsViewController"
+            case 4:
+                return "FourOptionsViewController"
+            case 5:
+                return "FiveOptionsViewController"
+            default:
+                return "Nil"
+            }
+        }()
+        guard let viewController = self.storyboard?.instantiateViewController(withIdentifier: viewControllerID) as? TwoOptionsViewController else { return }
+        viewController.remainingOptionList = self.remainingOptionList
         viewController.foodList = self.foodList
+        viewController.optionType = nextOptionType
+        viewController.validOptionIndices = Array<Int>(0..<optionCaseCount[nextOptionType]!)    //every options for initial choice must be valid
         viewController.modalPresentationStyle = .fullScreen
-        viewController.modalTransitionStyle = .crossDissolve
-        self.present(viewController, animated: true)
+        self.configureTransition()
+        self.present(viewController, animated: false)
     }
     
     @IBAction func randomButtonTap(_ sender: UIButton) {
