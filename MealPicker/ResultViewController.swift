@@ -12,22 +12,19 @@ class ResultViewController: UIViewController {
     @IBOutlet weak var resultImageView: UIImageView!
     @IBOutlet weak var rerollButton: UIButton!
     
-    var foodList: [FoodDetail]? {
-        didSet {
-            if let count = self.foodList?.count {
-                if count <= 1 {
-                    self.rerollButton.isHidden = true
-                }
-            }
-        }
-    }
+    var foodList: [FoodDetail]?
     var foodResult: FoodDetail?
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.rerollButton.isHidden = false
         self.pickFromList()
         self.configureView()
+        guard let foodList = self.foodList else { return }
+        if foodList.count <= 1 {
+            self.rerollButton.isHidden = true
+        } else {
+            self.rerollButton.isHidden = false
+        }
     }
     
     private func pickFromList() {
@@ -46,7 +43,7 @@ class ResultViewController: UIViewController {
     
     private func configureImageView(foodID: Int) {
 //        self.resultImageView.image = UIImage(named: "fid@\(foodID)")
-        self.resultImageView.image = UIImage(systemName: "xmark")
+        self.resultImageView.image = UIImage(systemName: "xmark")?.withTintColor(.black)
         self.resultImageView.layer.shadowColor = UIColor.black.cgColor
         self.resultImageView.layer.shadowOffset = CGSize(width: 8, height: 8)
         self.resultImageView.layer.shadowRadius = 5
@@ -70,5 +67,10 @@ class ResultViewController: UIViewController {
         guard let foodResult = self.foodResult else { return }
         self.configureLabel(foodName: foodResult.name)
         self.configureImageView(foodID: foodResult.foodID)
+        if let count = self.foodList?.count {
+            if count <= 1 {
+                self.rerollButton.isHidden = true
+            }
+        }
     }
 }

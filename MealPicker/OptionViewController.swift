@@ -8,16 +8,7 @@
 import UIKit
 
 class OptionViewController: UIViewController {
-    
-    var remainingOptionList: [OptionType]? {
-        didSet {
-            if let remainingOptionList = self.remainingOptionList {
-                if remainingOptionList.isEmpty {
-                    self.isLast = true
-                }
-            }
-        }
-    }
+    var remainingOptionList: [OptionType]?
     
     var foodList: [FoodDetail]?
     var optionType: OptionType?
@@ -29,14 +20,39 @@ class OptionViewController: UIViewController {
     
     var isLast: Bool = false
     
-    func pickOptionType() {
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        guard let foodList = self.foodList else { return }
         guard let optionType = self.optionType else { return }
-        switch optionType {
-        case .hasMeat:
+        guard let validOptionIndices = self.validOptionIndices else { return }
+        self.checkIfLast()
+        print("food list length: \(foodList.count)")
+        print("option type: \(optionType)")
+        print("valid option indices: \(validOptionIndices)")
+    }
+    
+    func checkIfLast() {
+        if let remainingOptionList = self.remainingOptionList {
+            if remainingOptionList.isEmpty {
+                self.isLast = true
+            }
+        }
+        if let nextValidOptionIndices = self.nextValidOptionIndices {
+            if nextValidOptionIndices.count <= 1 {
+                self.isLast = true
+            }
+        }
+    }
+    
+    func pickOptionType(optionIndex: Int) {
+        print("\nPick Option Type Called 1\n")
+        guard let optionType = self.optionType else { return }
+        print("\nPick Option Type Called 2\n")
+        if optionType == .hasMeat && optionIndex == 0 {                 //if choice was to have meat
             self.nextOptionType = .meatType
-        case .hasSeafood:
+        } else if optionType == .hasSeafood && optionIndex == 0 {       //if choice was to have seafood
             self.nextOptionType = .seafoodType
-        default:
+        } else {
             guard var remainingOptionList = self.remainingOptionList else { return }
             if let index = remainingOptionList.indices.randomElement() {
                 let optionType = remainingOptionList.remove(at: index)
@@ -44,22 +60,27 @@ class OptionViewController: UIViewController {
                 self.remainingOptionList = remainingOptionList
             }
         }
+        print("\nPick Option Type Called 3\n")
+        guard let nextOptionType = self.nextOptionType else { return }
+        print("next option type: \(nextOptionType)")
     }
     
     func countValidOptions() {
-        guard let optionType = self.optionType else { return }
         guard let nextOptionType = self.nextOptionType else { return }
         guard let nextFoodList = self.nextFoodList else { return }
-        guard let optionCount = optionCaseCount[optionType] else { return }
+        guard let optionCount = optionCaseCount[nextOptionType] else { return }
         
+        print("\nCOUNTING VALID OPTIONS.....")
         var validIndices: [Int] = []
         for index in 0..<optionCount {
-            var newFoodList = nextFoodList.compactMap({nextOptionType.compareEnumCase($0, choiceIndex: index)})
+            let newFoodList = nextFoodList.compactMap({nextOptionType.compareEnumCase($0, choiceIndex: index)})
+            print("\(optionCaseNames[nextOptionType]![index]): length of \(newFoodList.count)")
             if !newFoodList.isEmpty {
                 validIndices.append(index)              //append valid nextOption that, at least one food is led by the option
             }
         }
         self.nextValidOptionIndices = validIndices
+        print("COUNT DONE - Next valid options: \(validIndices)")
     }
     
     func configureNextViewController(viewController: OptionViewController) -> OptionViewController? {
@@ -79,7 +100,7 @@ class OptionViewController: UIViewController {
     func loadNextOptionViewController() {
         guard let nextValidOptionIndices = self.nextValidOptionIndices else { return }
         let nextOptionCount: Int = nextValidOptionIndices.count
-        switch nextOptionCount{
+        switch nextOptionCount {
         case 2:
             guard let initViewController = self.storyboard?.instantiateViewController(withIdentifier: "TwoOptionsViewController") as? TwoOptionsViewController else { return }
             guard let viewController = self.configureNextViewController(viewController: initViewController) as? TwoOptionsViewController else { return }
@@ -101,6 +122,15 @@ class OptionViewController: UIViewController {
         }
     }
     
+    func loadLoadingViewController() {
+        guard let viewController = self.storyboard?.instantiateViewController(withIdentifier: "LoadingViewController") as? LoadingViewController else { return }
+        viewController.isRandom = false
+        viewController.foodList = self.nextFoodList
+        viewController.modalPresentationStyle = .fullScreen
+        self.configureTransition()
+        self.present(viewController, animated: false)
+    }
+    
     func handleOptionTap(optionIndex: Int) {
         guard let optionType = self.optionType else { return }
         guard let validOptionIndices = self.validOptionIndices else { return }
@@ -109,13 +139,19 @@ class OptionViewController: UIViewController {
         }) else { return }
         self.nextFoodList = newFoodList
         
-        repeat {
-            self.pickOptionType()   //randomly-pick next option type, leading to a new remainingOptionList
-            self.countValidOptions() //count valid options based on next option type and create validOptionIndices array containing valid option indices
-        } while !self.nextValidOptionIndices!.isEmpty && !self.remainingOptionList!.isEmpty
+        print("next food list total length: \(newFoodList.count)")
         
+        repeat {
+            self.pickOptionType(optionIndex: optionIndex)   //randomly-pick next option type, leading to a new remainingOptionList
+            self.countValidOptions() //count valid options based on next option type and create validOptionIndices array containing valid option indices
+            print("COUNT DONE - Next remainig option types: \(self.remainingOptionList!)\n")
+        } while self.nextValidOptionIndices!.isEmpty && !self.remainingOptionList!.isEmpty
+        
+        self.checkIfLast()
         if !self.isLast {
             self.loadNextOptionViewController()     //based on valid option count, determine next view controller with corresponding ID
+        } else {
+            self.loadLoadingViewController()
         }
     }
 }

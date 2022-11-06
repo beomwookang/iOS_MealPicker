@@ -18,11 +18,9 @@ class TwoOptionsViewController: OptionViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        print("TwoOptionVC CALLED")
         self.configureView()
-        guard let remainingOptionList = self.remainingOptionList else { return }
-        if remainingOptionList.isEmpty {
-            self.isLast = true
-        }
+        self.checkIfLast()
     }
     
     private func configureOptionView(view: UIView, touchHandler: Selector, optionImageName: String, optionLabel: String) {
@@ -86,8 +84,8 @@ class TwoOptionsViewController: OptionViewController {
         guard let optionImageNames = optionCaseImageNames[optionType] else { return }
         guard let optionNames = optionCaseNames[optionType] else { return }
 
-        let firstOptionIndex = validOptionIndices[0]
-        let secondOptionIndex = validOptionIndices[1]
+        let firstOptionIndex: Int = validOptionIndices[0]
+        let secondOptionIndex: Int = validOptionIndices[1]
         
         self.configureOptionView(view: self.firstOptionView,
                            touchHandler: #selector(firstOptionDidTap),
@@ -105,10 +103,12 @@ class TwoOptionsViewController: OptionViewController {
     }
     
     @objc func firstOptionDidTap() {
+        print("first tapped")
         self.handleOptionTap(optionIndex: 0)
     }
     
     @objc func secondOptionDidTap() {
+        print("second tapped")
         self.handleOptionTap(optionIndex: 1)
     }
     

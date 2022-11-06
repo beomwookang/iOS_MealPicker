@@ -5,6 +5,8 @@ disabled_rules: #rules identifiers to exclude from running
   - unused_optional_binding
   - trailing_whitespace
   - comment_spacing
+  - cyclomatic_complexity
+  - function_body_length
 
 identifier_name:
   allowed_symbols: "_"

@@ -82,25 +82,50 @@ class ViewController: UIViewController {
         self.configureButtonShadow(self.mainBeginButton, CGSize(width: 8, height: 8), CGFloat(6), 0.25)
         self.configureButtonShadow(self.mainRandomButton, CGSize(width: 6, height: 6), CGFloat(5), 0.25)
     }
-    
-    private func configureTransition() {
-        let transition = CATransition()
-        transition.duration = 0.5
-        transition.type = CATransitionType.push
-        transition.subtype = CATransitionSubtype.fromRight
-        transition.timingFunction = CAMediaTimingFunction(name: CAMediaTimingFunctionName.easeInEaseOut)
-        self.view.window?.layer.add(transition, forKey: kCATransition)
-    }
 
     private func configureView() {
         self.configureButtons()
+    }
+    
+    private func configureNextViewController(viewController: OptionViewController) -> OptionViewController? {
+        guard let nextOptionType = self.nextOptionType else { return nil }
+        viewController.remainingOptionList = self.remainingOptionList
+        viewController.foodList = self.foodList
+        viewController.optionType = nextOptionType
+        viewController.validOptionIndices = [Int](0..<optionCaseCount[nextOptionType]!)    //every options for initial choice must be valid
+        viewController.modalPresentationStyle = .fullScreen
+        return viewController
     }
 
     @IBAction func beginButtonTap(_ sender: UIButton) {
         self.pickOptionType()
         guard let nextOptionType = self.nextOptionType else { return }
+        switch optionCaseCount[nextOptionType] {
+        case 2:
+            guard let initViewController = self.storyboard?.instantiateViewController(withIdentifier: "TwoOptionsViewController") as? TwoOptionsViewController else { return }
+            guard let viewController = self.configureNextViewController(viewController: initViewController) as? TwoOptionsViewController else { return }
+            self.configureTransition()
+            self.present(viewController, animated: true)
+        case 3:
+            guard let initViewController = self.storyboard?.instantiateViewController(withIdentifier: "ThreeOptionsViewController") as? ThreeOptionsViewController else { return }
+            guard let viewController = self.configureNextViewController(viewController: initViewController) as? ThreeOptionsViewController else { return }
+            self.configureTransition()
+            self.present(viewController, animated: true)
+        case 4:
+            guard let initViewController = self.storyboard?.instantiateViewController(withIdentifier: "FourOptionsViewController") as? FourOptionsViewController else { return }
+            guard let viewController = self.configureNextViewController(viewController: initViewController) as? FourOptionsViewController else { return }
+            self.configureTransition()
+            self.present(viewController, animated: true)
+        case 5:
+            guard let initViewController = self.storyboard?.instantiateViewController(withIdentifier: "FiveOptionsViewController") as? FiveOptionsViewController else { return }
+            guard let vieWController = self.configureNextViewController(viewController: initViewController) as? FiveOptionsViewController else { return }
+            self.configureTransition()
+            self.present(vieWController, animated: true)
+        default:
+            break
+        }
         let viewControllerID: String = {
-            switch optionCaseCount[nextOptionType]{
+            switch optionCaseCount[nextOptionType] {
             case 2:
                 return "TwoOptionsViewController"
             case 3:
@@ -117,7 +142,7 @@ class ViewController: UIViewController {
         viewController.remainingOptionList = self.remainingOptionList
         viewController.foodList = self.foodList
         viewController.optionType = nextOptionType
-        viewController.validOptionIndices = Array<Int>(0..<optionCaseCount[nextOptionType]!)    //every options for initial choice must be valid
+        viewController.validOptionIndices = [Int](0..<optionCaseCount[nextOptionType]!)    //every options for initial choice must be valid
         viewController.modalPresentationStyle = .fullScreen
         self.configureTransition()
         self.present(viewController, animated: false)
@@ -130,5 +155,16 @@ class ViewController: UIViewController {
         viewController.modalPresentationStyle = .fullScreen
         self.configureTransition()
         self.present(viewController, animated: false)
+    }
+}
+
+extension UIViewController {
+    func configureTransition() {
+        let transition = CATransition()
+        transition.duration = 0.5
+        transition.type = CATransitionType.push
+        transition.subtype = CATransitionSubtype.fromRight
+        transition.timingFunction = CAMediaTimingFunction(name: CAMediaTimingFunctionName.easeInEaseOut)
+        self.view.window?.layer.add(transition, forKey: kCATransition)
     }
 }

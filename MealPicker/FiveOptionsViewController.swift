@@ -21,11 +21,9 @@ class FiveOptionsViewController: OptionViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        print("FiveOptionVC CALLED")
         self.configureView()
-        guard let remainingOptionList = self.remainingOptionList else { return }
-        if remainingOptionList.isEmpty {
-            self.isLast = true
-        }
+        self.checkIfLast()
     }
     
     private func configureOptionView(view: UIView, touchHandler: Selector, optionImageName: String, optionLabel: String) {
@@ -84,26 +82,37 @@ class FiveOptionsViewController: OptionViewController {
     
     private func configureView() {
         self.navigationItem.hidesBackButton = true
+        guard let optionType = self.optionType else { return }
+        guard let validOptionIndices = self.validOptionIndices, validOptionIndices.count == 5 else { return }
+        guard let optionImageNames = optionCaseImageNames[optionType] else { return }
+        guard let optionNames = optionCaseNames[optionType] else { return }
+
+        let firstOptionIndex: Int = validOptionIndices[0]
+        let secondOptionIndex: Int = validOptionIndices[1]
+        let thirdOptionIndex: Int = validOptionIndices[2]
+        let fourthOptionIndex: Int = validOptionIndices[3]
+        let fifthOptionIndex: Int = validOptionIndices[4]
+        
         self.configureOptionView(view: self.firstOptionView,
                            touchHandler: #selector(firstOptionDidTap),
-                           optionImageName: "country_Korean",
-                           optionLabel: "한식")
+                           optionImageName: optionImageNames[firstOptionIndex],
+                           optionLabel: optionNames[firstOptionIndex])
         self.configureOptionView(view: self.secondOptionView,
                            touchHandler: #selector(secondOptionDidTap),
-                           optionImageName: "country_Western",
-                           optionLabel: "양식")
+                           optionImageName: optionImageNames[secondOptionIndex],
+                           optionLabel: optionNames[secondOptionIndex])
         self.configureOptionView(view: self.thirdOptionView,
                            touchHandler: #selector(thirdOptionDidTap),
-                           optionImageName: "country_Chinese",
-                           optionLabel: "중식")
+                           optionImageName: optionImageNames[thirdOptionIndex],
+                           optionLabel: optionNames[thirdOptionIndex])
         self.configureOptionView(view: self.fourthOptionView,
                            touchHandler: #selector(fourthOptionDidTap),
-                           optionImageName: "country_Japanese",
-                           optionLabel: "일식")
+                           optionImageName: optionImageNames[fourthOptionIndex],
+                           optionLabel: optionNames[fourthOptionIndex])
         self.configureOptionView(view: self.fifthOptionView,
                            touchHandler: #selector(fifthOptionDidTap),
-                           optionImageName: "country_Others",
-                           optionLabel: "기타 국가")
+                           optionImageName: optionImageNames[fifthOptionIndex],
+                           optionLabel: optionNames[fifthOptionIndex])
         self.configureNoMatter()
         self.progressBar.layer.cornerRadius = 3
         self.progressBar.layer.borderColor = UIColor.black.cgColor
@@ -112,22 +121,27 @@ class FiveOptionsViewController: OptionViewController {
     }
     
     @objc func firstOptionDidTap() {
+        print("first tapped")
         self.handleOptionTap(optionIndex: 0)
     }
     
     @objc func secondOptionDidTap() {
+        print("second tapped")
         self.handleOptionTap(optionIndex: 1)
     }
     
     @objc func thirdOptionDidTap() {
-        self.handleOptionTap(optionIndex: 2)
+        print("third tapped")
+        self.handleOptionTap(optionIndex: 1)
     }
     
     @objc func fourthOptionDidTap() {
+        print("fourth tapped")
         self.handleOptionTap(optionIndex: 3)
     }
     
     @objc func fifthOptionDidTap() {
+        print("fifth tapped")
         self.handleOptionTap(optionIndex: 4)
     }
     

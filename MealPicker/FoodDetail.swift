@@ -40,8 +40,8 @@ protocol PropertyReflectable { }
 extension PropertyReflectable {
     subscript(key: String) -> Any? {
         let mirror = Mirror(reflecting: self)
-        for child in mirror.children {
-            if child.label == key { return child.value}
+        for child in mirror.children where child.label == key {
+            return child.value
         }
         return nil
     }
@@ -96,10 +96,10 @@ enum OptionType: Any {
     case hasSeafood
     case seafoodType
     
-    func compareEnumCase(_ foodDetail : FoodDetail, choiceIndex: Int) -> FoodDetail? {
+    func compareEnumCase(_ foodDetail: FoodDetail, choiceIndex: Int) -> FoodDetail? {
         switch self {
         case .country: return foodDetail.country == CountryType(rawValue: choiceIndex) ? foodDetail : nil
-        case .isSpicy: return foodDetail.isSpicy == IsSpicy(rawValue: choiceIndex) ? foodDetail : nil
+        case .isSpicy: return foodDetail.isSpicy == IsSpicy(rawValue: choiceIndex) || foodDetail.isSpicy == .depends ? foodDetail : nil
         case .isHot: return foodDetail.isHot == IsHot(rawValue: choiceIndex) ? foodDetail : nil
         case .isSoup: return foodDetail.isSoup == IsSoup(rawValue: choiceIndex) ? foodDetail : nil
         case .carbType: return foodDetail.carbType == CarbType(rawValue: choiceIndex) ? foodDetail : nil
@@ -111,7 +111,7 @@ enum OptionType: Any {
     }
 }
 
-let optionCaseCount : [OptionType : Int] = [
+let optionCaseCount: [OptionType: Int] = [
     .country: 5,
     .isSpicy: 2,
     .isHot: 2,
@@ -123,7 +123,7 @@ let optionCaseCount : [OptionType : Int] = [
     .seafoodType: 2
 ]
 
-let optionCaseNames: [OptionType : [String]] = [
+let optionCaseNames: [OptionType: [String]] = [
     .country: ["한식", "양식", "중식", "일식", "기타 국가"],
     .isSpicy: ["매운 음식", "안 매운 음식"],
     .isHot: ["따뜻한 음식", "시원한 음식"],
@@ -135,13 +135,13 @@ let optionCaseNames: [OptionType : [String]] = [
     .seafoodType: ["생선(어류)", "기타"]
 ]
 
-let optionCaseImageNames: [OptionType : [String]] = [
+let optionCaseImageNames: [OptionType: [String]] = [
     .country: ["Korean", "Western", "Chinese", "Japanese", "Others"].map({"country_" + $0}),
     .isSpicy: ["Spicy", "NotSpicy"].map({"isSpicy_" + $0}),
     .isHot: ["Hot", "NotHot"].map({"isHot_" + $0}),
     .isSoup: ["Soup", "NotSoup"].map({"isSoup_" + $0}),
     .carbType: ["Rice", "Noodle", "Others"].map({"carbType_" + $0}),
-    .hasMeat: ["Meat", "NoMeet"].map({"hasMeat_" + $0}),
+    .hasMeat: ["Meat", "NoMeat"].map({"hasMeat_" + $0}),
     .meatType: ["Pork", "Beef", "Chicken", "Others"].map({"meatType_" + $0}),
     .hasSeafood: ["Seafood", "NoSeafood"].map({"hasSeafood_" + $0}),
     .seafoodType: ["Fish", "Others"].map({"seafoodType_" + $0})

@@ -19,11 +19,9 @@ class ThreeOptionsViewController: OptionViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        print("ThreeOptionVC CALLED")
         self.configureView()
-        guard let remainingOptionList = self.remainingOptionList else { return }
-        if remainingOptionList.isEmpty {
-            self.isLast = true
-        }
+        self.checkIfLast()
     }
     
     private func configureOptionView(view: UIView, touchHandler: Selector, optionImageName: String, optionLabel: String) {
@@ -82,18 +80,27 @@ class ThreeOptionsViewController: OptionViewController {
     
     private func configureView() {
         self.navigationItem.hidesBackButton = true
+        guard let optionType = self.optionType else { return }
+        guard let validOptionIndices = self.validOptionIndices, validOptionIndices.count == 3 else { return }
+        guard let optionImageNames = optionCaseImageNames[optionType] else { return }
+        guard let optionNames = optionCaseNames[optionType] else { return }
+
+        let firstOptionIndex: Int = validOptionIndices[0]
+        let secondOptionIndex: Int = validOptionIndices[1]
+        let thirdOptionIndex: Int = validOptionIndices[2]
+        
         self.configureOptionView(view: self.firstOptionView,
                            touchHandler: #selector(firstOptionDidTap),
-                           optionImageName: "carbType_Rice",
-                           optionLabel: "밥")
+                           optionImageName: optionImageNames[firstOptionIndex],
+                           optionLabel: optionNames[firstOptionIndex])
         self.configureOptionView(view: self.secondOptionView,
                            touchHandler: #selector(secondOptionDidTap),
-                           optionImageName: "carbType_Noodle",
-                           optionLabel: "면")
+                           optionImageName: optionImageNames[secondOptionIndex],
+                           optionLabel: optionNames[secondOptionIndex])
         self.configureOptionView(view: self.thirdOptionView,
                            touchHandler: #selector(thirdOptionDidTap),
-                           optionImageName: "carbType_Others",
-                           optionLabel: "기타")
+                           optionImageName: optionImageNames[thirdOptionIndex],
+                           optionLabel: optionNames[thirdOptionIndex])
         self.configureNoMatter()
         self.progressBar.layer.cornerRadius = 3
         self.progressBar.layer.borderColor = UIColor.black.cgColor
@@ -102,15 +109,18 @@ class ThreeOptionsViewController: OptionViewController {
     }
     
     @objc func firstOptionDidTap() {
+        print("first tapped")
         self.handleOptionTap(optionIndex: 0)
     }
     
     @objc func secondOptionDidTap() {
+        print("second tapped")
         self.handleOptionTap(optionIndex: 1)
     }
     
     @objc func thirdOptionDidTap() {
-        self.handleOptionTap(optionIndex: 1)
+        print("third tapped")
+        self.handleOptionTap(optionIndex: 2)
     }
     
     @IBAction func noMatterButtonTap(_ sender: UIButton) {

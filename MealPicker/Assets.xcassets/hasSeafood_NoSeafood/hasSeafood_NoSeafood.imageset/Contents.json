@@ -1,0 +1,23 @@
+{
+  "images" : [
+    {
+      "filename" : "hasSeafood_NoSeafood@1x.jpg",
+      "idiom" : "universal",
+      "scale" : "1x"
+    },
+    {
+      "filename" : "hasSeafood_NoSeafood@2x.jpg",
+      "idiom" : "universal",
+      "scale" : "2x"
+    },
+    {
+      "filename" : "hasSeafood_NoSeafood@3x.jpg",
+      "idiom" : "universal",
+      "scale" : "3x"
+    }
+  ],
+  "info" : {
+    "author" : "xcode",
+    "version" : 1
+  }
+}

@@ -20,11 +20,9 @@ class FourOptionsViewController: OptionViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        print("FourOptionVC CALLED")
         self.configureView()
-        guard let remainingOptionList = self.remainingOptionList else { return }
-        if remainingOptionList.isEmpty {
-            self.isLast = true
-        }
+        self.checkIfLast()
     }
     
     private func configureOptionView(view: UIView, touchHandler: Selector, optionImageName: String, optionLabel: String) {
@@ -83,22 +81,32 @@ class FourOptionsViewController: OptionViewController {
     
     private func configureView() {
         self.navigationItem.hidesBackButton = true
+        guard let optionType = self.optionType else { return }
+        guard let validOptionIndices = self.validOptionIndices, validOptionIndices.count == 4 else { return }
+        guard let optionImageNames = optionCaseImageNames[optionType] else { return }
+        guard let optionNames = optionCaseNames[optionType] else { return }
+
+        let firstOptionIndex: Int = validOptionIndices[0]
+        let secondOptionIndex: Int = validOptionIndices[1]
+        let thirdOptionIndex: Int = validOptionIndices[2]
+        let fourthOptionIndex: Int = validOptionIndices[3]
+        
         self.configureOptionView(view: self.firstOptionView,
                            touchHandler: #selector(firstOptionDidTap),
-                           optionImageName: "meatType_Pork",
-                           optionLabel: "돼지고기")
+                           optionImageName: optionImageNames[firstOptionIndex],
+                           optionLabel: optionNames[firstOptionIndex])
         self.configureOptionView(view: self.secondOptionView,
                            touchHandler: #selector(secondOptionDidTap),
-                           optionImageName: "meatType_Beef",
-                           optionLabel: "소고기")
+                           optionImageName: optionImageNames[secondOptionIndex],
+                           optionLabel: optionNames[secondOptionIndex])
         self.configureOptionView(view: self.thirdOptionView,
                            touchHandler: #selector(thirdOptionDidTap),
-                           optionImageName: "meatType_Chicken",
-                           optionLabel: "닭고기")
+                           optionImageName: optionImageNames[thirdOptionIndex],
+                           optionLabel: optionNames[thirdOptionIndex])
         self.configureOptionView(view: self.fourthOptionView,
                            touchHandler: #selector(fourthOptionDidTap),
-                           optionImageName: "meatType_Others",
-                           optionLabel: "기타")
+                           optionImageName: optionImageNames[fourthOptionIndex],
+                           optionLabel: optionNames[fourthOptionIndex])
         self.configureNoMatter()
         self.progressBar.layer.cornerRadius = 3
         self.progressBar.layer.borderColor = UIColor.black.cgColor
@@ -107,18 +115,22 @@ class FourOptionsViewController: OptionViewController {
     }
     
     @objc func firstOptionDidTap() {
+        print("first tapped")
         self.handleOptionTap(optionIndex: 0)
     }
     
     @objc func secondOptionDidTap() {
+        print("second tapped")
         self.handleOptionTap(optionIndex: 1)
     }
     
     @objc func thirdOptionDidTap() {
-        self.handleOptionTap(optionIndex: 2)
+        print("third tapped")
+        self.handleOptionTap(optionIndex: 1)
     }
     
     @objc func fourthOptionDidTap() {
+        print("fourth tapped")
         self.handleOptionTap(optionIndex: 3)
     }
     
