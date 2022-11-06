@@ -18,7 +18,6 @@ class TwoOptionsViewController: OptionViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        print("TwoOptionVC CALLED")
         self.configureView()
         self.checkIfLast()
     }
@@ -103,12 +102,10 @@ class TwoOptionsViewController: OptionViewController {
     }
     
     @objc func firstOptionDidTap() {
-        print("first tapped")
         self.handleOptionTap(optionIndex: 0)
     }
     
     @objc func secondOptionDidTap() {
-        print("second tapped")
         self.handleOptionTap(optionIndex: 1)
     }
     

@@ -20,7 +20,6 @@ class FourOptionsViewController: OptionViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        print("FourOptionVC CALLED")
         self.configureView()
         self.checkIfLast()
     }
@@ -115,22 +114,18 @@ class FourOptionsViewController: OptionViewController {
     }
     
     @objc func firstOptionDidTap() {
-        print("first tapped")
         self.handleOptionTap(optionIndex: 0)
     }
     
     @objc func secondOptionDidTap() {
-        print("second tapped")
         self.handleOptionTap(optionIndex: 1)
     }
     
     @objc func thirdOptionDidTap() {
-        print("third tapped")
         self.handleOptionTap(optionIndex: 1)
     }
     
     @objc func fourthOptionDidTap() {
-        print("fourth tapped")
         self.handleOptionTap(optionIndex: 3)
     }
     

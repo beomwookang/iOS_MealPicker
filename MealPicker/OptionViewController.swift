@@ -22,13 +22,7 @@ class OptionViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        guard let foodList = self.foodList else { return }
-        guard let optionType = self.optionType else { return }
-        guard let validOptionIndices = self.validOptionIndices else { return }
         self.checkIfLast()
-        print("food list length: \(foodList.count)")
-        print("option type: \(optionType)")
-        print("valid option indices: \(validOptionIndices)")
     }
     
     func checkIfLast() {
@@ -45,9 +39,7 @@ class OptionViewController: UIViewController {
     }
     
     func pickOptionType(optionIndex: Int) {
-        print("\nPick Option Type Called 1\n")
         guard let optionType = self.optionType else { return }
-        print("\nPick Option Type Called 2\n")
         if optionType == .hasMeat && optionIndex == 0 {                 //if choice was to have meat
             self.nextOptionType = .meatType
         } else if optionType == .hasSeafood && optionIndex == 0 {       //if choice was to have seafood
@@ -60,9 +52,6 @@ class OptionViewController: UIViewController {
                 self.remainingOptionList = remainingOptionList
             }
         }
-        print("\nPick Option Type Called 3\n")
-        guard let nextOptionType = self.nextOptionType else { return }
-        print("next option type: \(nextOptionType)")
     }
     
     func countValidOptions() {
@@ -70,17 +59,14 @@ class OptionViewController: UIViewController {
         guard let nextFoodList = self.nextFoodList else { return }
         guard let optionCount = optionCaseCount[nextOptionType] else { return }
         
-        print("\nCOUNTING VALID OPTIONS.....")
         var validIndices: [Int] = []
         for index in 0..<optionCount {
             let newFoodList = nextFoodList.compactMap({nextOptionType.compareEnumCase($0, choiceIndex: index)})
-            print("\(optionCaseNames[nextOptionType]![index]): length of \(newFoodList.count)")
             if !newFoodList.isEmpty {
                 validIndices.append(index)              //append valid nextOption that, at least one food is led by the option
             }
         }
         self.nextValidOptionIndices = validIndices
-        print("COUNT DONE - Next valid options: \(validIndices)")
     }
     
     func configureNextViewController(viewController: OptionViewController) -> OptionViewController? {
@@ -139,12 +125,9 @@ class OptionViewController: UIViewController {
         }) else { return }
         self.nextFoodList = newFoodList
         
-        print("next food list total length: \(newFoodList.count)")
-        
         repeat {
             self.pickOptionType(optionIndex: optionIndex)   //randomly-pick next option type, leading to a new remainingOptionList
             self.countValidOptions() //count valid options based on next option type and create validOptionIndices array containing valid option indices
-            print("COUNT DONE - Next remainig option types: \(self.remainingOptionList!)\n")
         } while self.nextValidOptionIndices!.isEmpty && !self.remainingOptionList!.isEmpty
         
         self.checkIfLast()
