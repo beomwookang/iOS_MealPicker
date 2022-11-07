@@ -67,6 +67,22 @@ class OptionViewController: UIViewController {
         }
     }
     
+    func pickOptionType(optionIndices: [Int]) {
+        guard let optionType = self.optionType else { return }
+        if optionType == .hasMeat && optionIndices.contains(0) {                 //if choice was to have meat
+            self.nextOptionType = .meatType
+        } else if optionType == .hasSeafood && optionIndices.contains(0) {       //if choice was to have seafood
+            self.nextOptionType = .seafoodType
+        } else {
+            guard var remainingOptionList = self.remainingOptionList else { return }
+            if let index = remainingOptionList.indices.randomElement() {
+                let optionType = remainingOptionList.remove(at: index)
+                self.nextOptionType = optionType
+                self.remainingOptionList = remainingOptionList
+            }
+        }
+    }
+    
     func countValidOptions() {
         guard let nextOptionType = self.nextOptionType else { return }
         guard let nextFoodList = self.nextFoodList else { return }
@@ -132,16 +148,17 @@ class OptionViewController: UIViewController {
         self.present(viewController, animated: false)
     }
     
-    func handleOptionTap(optionIndex: Int) {
+    func handleOptionTap(optionIndices: [Int]) {
         guard let optionType = self.optionType else { return }
         guard let validOptionIndices = self.validOptionIndices else { return }
+        let choiceIndices: [Int] = optionIndices.count == 1 ? [validOptionIndices[optionIndices[0]]] : validOptionIndices
         guard let newFoodList = self.foodList?.compactMap({
-            optionType.compareEnumCase($0, choiceIndex: validOptionIndices[optionIndex])
+            optionType.compareEnumCase($0, choiceIndices: choiceIndices)
         }) else { return }
         self.nextFoodList = newFoodList
         
         repeat {
-            self.pickOptionType(optionIndex: optionIndex)   //randomly-pick next option type, leading to a new remainingOptionList
+            self.pickOptionType(optionIndices: optionIndices)   //randomly-pick next option type, leading to a new remainingOptionList
             self.countValidOptions() //count valid options based on next option type and create validOptionIndices array containing valid option indices
         } while self.nextValidOptionIndices!.isEmpty && !self.remainingOptionList!.isEmpty
         

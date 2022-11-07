@@ -134,22 +134,22 @@ class FourOptionsViewController: OptionViewController {
     }
     
     @objc func firstOptionDidTap() {
-        self.handleOptionTap(optionIndex: 0)
+        self.handleOptionTap(optionIndices: [0])
     }
     
     @objc func secondOptionDidTap() {
-        self.handleOptionTap(optionIndex: 1)
+        self.handleOptionTap(optionIndices: [1])
     }
     
     @objc func thirdOptionDidTap() {
-        self.handleOptionTap(optionIndex: 1)
+        self.handleOptionTap(optionIndices: [2])
     }
     
     @objc func fourthOptionDidTap() {
-        self.handleOptionTap(optionIndex: 3)
+        self.handleOptionTap(optionIndices: [3])
     }
     
     @IBAction func noMatterButtonTap(_ sender: UIButton) {
-        print("no matter")
+        self.handleOptionTap(optionIndices: [0, 1, 2, 3])
     }
 }

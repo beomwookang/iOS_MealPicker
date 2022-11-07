@@ -20,7 +20,7 @@ class ResultViewController: UIViewController {
         self.pickFromList()
         self.configureView()
         guard let foodList = self.foodList else { return }
-        if foodList.count <= 1 {
+        if foodList.isEmpty {
             self.rerollButton.isHidden = true
         } else {
             self.rerollButton.isHidden = false
@@ -64,13 +64,12 @@ class ResultViewController: UIViewController {
     
     @IBAction func rerollButtonTap(_ sender: UIButton) {
         self.pickFromList()
+        guard let foodList = self.foodList else { return }
         guard let foodResult = self.foodResult else { return }
         self.configureLabel(foodName: foodResult.name)
         self.configureImageView(foodID: foodResult.foodID)
-        if let count = self.foodList?.count {
-            if count <= 1 {
+        if foodList.isEmpty {
                 self.rerollButton.isHidden = true
-            }
         }
     }
 }

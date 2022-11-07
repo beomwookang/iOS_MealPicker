@@ -122,14 +122,14 @@ class TwoOptionsViewController: OptionViewController {
     }
     
     @objc func firstOptionDidTap() {
-        self.handleOptionTap(optionIndex: 0)
+        self.handleOptionTap(optionIndices: [0])
     }
     
     @objc func secondOptionDidTap() {
-        self.handleOptionTap(optionIndex: 1)
+        self.handleOptionTap(optionIndices: [1])
     }
     
     @IBAction func noMatterButtonTap(_ sender: UIButton) {
-        print("no matter")
+        self.handleOptionTap(optionIndices: [0, 1])
     }
 }

@@ -111,6 +111,24 @@ enum OptionType: Any {
         case .seafoodType: return foodDetail.seafoodType == SeafoodType(rawValue: choiceIndex) ? foodDetail : nil
         }
     }
+    
+    func compareEnumCase(_ foodDetail: FoodDetail, choiceIndices: [Int]) -> FoodDetail? {
+        var isValid: Bool = false
+        for index in choiceIndices {
+            switch self {
+            case .country: if foodDetail.country == CountryType(rawValue: index) { isValid = true }
+            case .isSpicy: if foodDetail.isSpicy == IsSpicy(rawValue: index) { isValid = true }
+            case .isHot: if foodDetail.isHot == IsHot(rawValue: index) { isValid = true }
+            case .isSoup: if foodDetail.isSoup == IsSoup(rawValue: index) { isValid = true }
+            case .carbType: if foodDetail.carbType == CarbType(rawValue: index) { isValid = true }
+            case .hasMeat: if foodDetail.hasMeat == HasMeat(rawValue: index) { isValid = true }
+            case .meatType: if foodDetail.meatType == MeatType(rawValue: index) { isValid = true }
+            case .hasSeafood: if foodDetail.hasSeafood == HasSeafood(rawValue: index) { isValid = true }
+            case .seafoodType: if foodDetail.seafoodType == SeafoodType(rawValue: index) { isValid = true }
+            }
+        }
+        return isValid ? foodDetail : nil
+    }
 }
 
 let optionCaseCount: [OptionType: Int] = [
