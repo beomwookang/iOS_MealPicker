@@ -23,14 +23,47 @@ class OptionViewController: UIViewController {
     
     var isLast: Bool = false
     
+    var timeLimit: Float = 0.0
+    var timeRemainingSeconds: Float = 0.0
+    var timer: DispatchSourceTimer?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         self.checkIfLast()
+        self.setTimeLimit()
     }
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         self.updateProgress()
+        self.startTimer()
+    }
+    
+    func setTimeLimit() {
+    }
+    
+    func updateTimeLimitBar() {
+    }
+    
+    func startTimer() {
+        if self.timer == nil {
+            self.timer = DispatchSource.makeTimerSource(flags: [], queue: .main)
+            self.timer?.schedule(deadline: .now(), repeating: 0.1)
+            self.timer?.setEventHandler(handler: { [weak self] in
+                guard let self = self else { return }
+                self.timeRemainingSeconds -= 0.1
+                self.updateTimeLimitBar()
+                if self.timeRemainingSeconds <= 0 {
+                    self.stopTimer()
+                }
+            })
+            self.timer?.resume()
+        }
+    }
+    
+    func stopTimer() {
+        self.timer?.cancel()
+        self.timer = nil
     }
     
     func updateProgress() {

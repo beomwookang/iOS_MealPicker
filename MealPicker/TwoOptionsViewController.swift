@@ -33,6 +33,22 @@ class TwoOptionsViewController: OptionViewController {
         super.viewDidAppear(animated)
         self.updateProgress()
     }
+    
+    override func setTimeLimit() {
+        self.timeLimit = 3.0
+        self.timeRemainingSeconds = 3.0
+    }
+    
+    override func updateTimeLimitBar() {
+        UIView.animate(withDuration: 0.1, animations: {
+            self.timeLimitBar.setProgress(self.timeRemainingSeconds/self.timeLimit, animated: true)
+        })
+    }
+    
+    override func stopTimer() {
+        super.stopTimer()
+        self.handleOptionTap(optionIndices: [0, 1])
+    }
 
     override func updateProgress() {
         super.updateProgress()

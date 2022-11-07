@@ -162,7 +162,7 @@
                                     <action selector="noMatterButtonTap:" destination="iZU-ML-QBR" eventType="touchUpInside" id="mYD-9W-Zrz"/>
                                 </connections>
                             </button>
-                            <progressView opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="750" progress="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="PQD-or-kpc">
+                            <progressView opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="750" progress="1" translatesAutoresizingMaskIntoConstraints="NO" id="PQD-or-kpc">
                                 <rect key="frame" x="0.0" y="565.5" width="320" height="2.5"/>
                             </progressView>
                         </subviews>
@@ -259,7 +259,7 @@
                                     <action selector="noMatterButtonTap:" destination="52z-3h-elp" eventType="touchUpInside" id="7P6-Uf-RWH"/>
                                 </connections>
                             </button>
-                            <progressView opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="750" progress="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="YQe-XA-hga">
+                            <progressView opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="750" progress="1" translatesAutoresizingMaskIntoConstraints="NO" id="YQe-XA-hga">
                                 <rect key="frame" x="0.0" y="565.5" width="320" height="2.5"/>
                             </progressView>
                         </subviews>
@@ -319,25 +319,13 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rRK-9g-d1t">
-                                <rect key="frame" x="0.0" y="318" width="320" height="35"/>
-                                <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <state key="normal" title="Button"/>
-                                <buttonConfiguration key="configuration" style="plain" title="결과보기(테스트용)"/>
-                                <connections>
-                                    <action selector="tabShowResult:" destination="B5f-ad-Uer" eventType="touchUpInside" id="tgL-BC-TDr"/>
-                                </connections>
-                            </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="8Vc-uu-ZPT"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstAttribute="bottom" secondItem="tEv-fD-JIN" secondAttribute="bottom" id="Ber-jq-Jfj"/>
                             <constraint firstItem="FHA-nx-tLU" firstAttribute="centerY" secondItem="jb1-3B-XtA" secondAttribute="centerY" id="JK8-uU-uFN"/>
-                            <constraint firstItem="rRK-9g-d1t" firstAttribute="top" secondItem="FHA-nx-tLU" secondAttribute="bottom" constant="10" id="a7d-s5-nSd"/>
-                            <constraint firstItem="rRK-9g-d1t" firstAttribute="leading" secondItem="8Vc-uu-ZPT" secondAttribute="leading" id="due-aJ-05p"/>
                             <constraint firstItem="8Vc-uu-ZPT" firstAttribute="trailing" secondItem="tEv-fD-JIN" secondAttribute="trailing" id="fnW-gb-cVr"/>
-                            <constraint firstItem="8Vc-uu-ZPT" firstAttribute="trailing" secondItem="rRK-9g-d1t" secondAttribute="trailing" id="hGh-Rm-Qxa"/>
                             <constraint firstItem="tEv-fD-JIN" firstAttribute="top" secondItem="8Vc-uu-ZPT" secondAttribute="top" id="oHh-y9-850"/>
                             <constraint firstItem="tEv-fD-JIN" firstAttribute="leading" secondItem="jb1-3B-XtA" secondAttribute="leading" id="t1M-5J-XP3"/>
                             <constraint firstItem="FHA-nx-tLU" firstAttribute="centerX" secondItem="jb1-3B-XtA" secondAttribute="centerX" id="yJZ-h4-FSq"/>
@@ -520,7 +508,7 @@
                                     <action selector="noMatterButtonTap:" destination="PbX-3g-XM7" eventType="touchUpInside" id="ywA-VX-UgG"/>
                                 </connections>
                             </button>
-                            <progressView opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="750" progress="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="y6z-TM-gy6">
+                            <progressView opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="750" progress="1" translatesAutoresizingMaskIntoConstraints="NO" id="y6z-TM-gy6">
                                 <rect key="frame" x="0.0" y="565.5" width="320" height="2.5"/>
                             </progressView>
                         </subviews>
@@ -645,7 +633,7 @@
                                     <action selector="noMatterButtonTap:" destination="8Nt-MU-GOb" eventType="touchUpInside" id="4LV-i7-Onb"/>
                                 </connections>
                             </button>
-                            <progressView opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="750" progress="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="jxY-ff-h72">
+                            <progressView opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="750" progress="1" translatesAutoresizingMaskIntoConstraints="NO" id="jxY-ff-h72">
                                 <rect key="frame" x="0.0" y="565.5" width="320" height="2.5"/>
                             </progressView>
                         </subviews>

@@ -13,9 +13,39 @@ class LoadingViewController: UIViewController {
     var foodList: [FoodDetail]?
     var isRandom: Bool = false
     
+    var timeRemainingSeconds: Float = 1.5
+    var timer: DispatchSourceTimer?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         self.configureView()
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        self.startTimer()
+    }
+    
+    func startTimer() {
+        if self.timer == nil {
+            self.timer = DispatchSource.makeTimerSource(flags: [], queue: .main)
+            self.timer?.schedule(deadline: .now(), repeating: 0.1)
+            self.timer?.setEventHandler(handler: { [weak self] in
+                guard let self = self else { return }
+                self.timeRemainingSeconds -= 0.1
+                if self.timeRemainingSeconds <= 0 {
+                    self.stopTimer()
+                }
+            })
+            self.timer?.resume()
+        }
+    }
+    
+    func stopTimer() {
+        self.timer?.cancel()
+        self.timer = nil
+        guard let foodList = self.foodList else { return }
+        self.loadResult(foodList)
     }
     
     private func configureLabel() {
@@ -38,10 +68,5 @@ class LoadingViewController: UIViewController {
         viewController.modalPresentationStyle = .fullScreen
         self.configureTransition()
         self.present(viewController, animated: false)
-    }
-    
-    @IBAction func tabShowResult(_ sender: UIButton) {
-        guard let foodList = self.foodList else { return }
-        self.loadResult(foodList)
     }
 }
