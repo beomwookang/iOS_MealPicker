@@ -14,6 +14,14 @@ class ViewController: UIViewController {
     var foodList: [FoodDetail] = []
     var remainingOptionList: [OptionType] = []
     var nextOptionType: OptionType?
+    
+    let imageChangeDuration: Double = 0.75
+    var timer: DispatchSourceTimer?
+    
+    let defaultMainImageNames: [String] = ["Bibimbap", "Burger", "Chicken", "Dimsum", "HotPot",
+                                    "Kimbap", "Pizza", "Ramen", "Sushi", "Takoyaki", "Tteokbokki"
+                                   ]
+    var mainImageNames: [String] = []
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -24,6 +32,44 @@ class ViewController: UIViewController {
         super.viewWillAppear(animated)
         self.loadFoodsFromCSV()
         self.initializeFoodOptions()
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        self.startTimer()
+    }
+    
+    func startTimer() {
+        if self.timer == nil {
+            self.timer = DispatchSource.makeTimerSource(flags: [], queue: .main)
+            self.timer?.schedule(deadline: .now(), repeating: self.imageChangeDuration)
+            self.timer?.setEventHandler(handler: { [weak self] in
+                guard let self = self else { return }
+                self.updateMainImage()
+            })
+            self.timer?.resume()
+        }
+    }
+    
+    func stopTimer() {
+        self.timer?.cancel()
+        self.timer = nil
+    }
+    
+    private func updateMainImage() {
+        if self.mainImageNames.isEmpty {
+            self.mainImageNames = self.defaultMainImageNames
+        }
+        if let index = self.mainImageNames.indices.randomElement() {
+            let mainImageName = self.mainImageNames.remove(at: index)
+            UIView.transition(with: self.mainBeginButton.imageView!,
+                              duration: self.imageChangeDuration,
+                                      options: .transitionCrossDissolve,
+                                      animations: {
+                self.mainBeginButton.imageView?.image = UIImage(named: "Main" + mainImageName)
+                self.mainBeginButton.imageView?.contentMode = .center
+                    }, completion: nil)
+        }
     }
     
     private func pickOptionType() {

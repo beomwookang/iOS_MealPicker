@@ -1,17 +1,17 @@
 {
   "images" : [
     {
-      "filename" : "bibimbap@1x.png",
+      "filename" : "MainTakoyaki.png",
       "idiom" : "universal",
       "scale" : "1x"
     },
     {
-      "filename" : "bibimbap@2x.png",
+      "filename" : "MainTakoyaki@2x.png",
       "idiom" : "universal",
       "scale" : "2x"
     },
     {
-      "filename" : "bibimbap@3x.png",
+      "filename" : "MainTakoyaki@3x.png",
       "idiom" : "universal",
       "scale" : "3x"
     }
