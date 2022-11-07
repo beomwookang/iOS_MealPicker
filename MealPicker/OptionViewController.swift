@@ -18,6 +18,9 @@ class OptionViewController: UIViewController {
     var nextOptionType: OptionType?
     var nextValidOptionIndices: [Int]?
     
+    var oldProgress: Float?
+    var newProgress: Float?
+    
     var isLast: Bool = false
     
     override func viewDidLoad() {
@@ -25,6 +28,16 @@ class OptionViewController: UIViewController {
         self.checkIfLast()
     }
     
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        self.updateProgress()
+    }
+    
+    func updateProgress() {
+        guard let foodList = self.foodList else { return }
+        self.newProgress = (Float(totalFoodCount) - Float(foodList.count))/Float(totalFoodCount)
+    }
+
     func checkIfLast() {
         if let remainingOptionList = self.remainingOptionList {
             if remainingOptionList.isEmpty {
@@ -74,10 +87,12 @@ class OptionViewController: UIViewController {
         guard let nextFoodList = self.nextFoodList else { return nil }
         guard let nextOptionType = self.nextOptionType else { return nil }
         guard let nextValidOptionIndices = self.nextValidOptionIndices else { return nil}
+        guard let newProgress = self.newProgress else { return nil }
         viewController.remainingOptionList = remainingOptionList
         viewController.foodList = nextFoodList
         viewController.optionType = nextOptionType
         viewController.validOptionIndices = nextValidOptionIndices
+        viewController.oldProgress = newProgress
         viewController.modalPresentationStyle = .fullScreen
         viewController.modalTransitionStyle = .crossDissolve
         return viewController

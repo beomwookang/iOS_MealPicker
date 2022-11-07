@@ -7,6 +7,8 @@
 
 import Foundation
 
+let totalFoodCount: Int = 223
+
 struct FoodDetail {
     var name: String
     var foodID: Int

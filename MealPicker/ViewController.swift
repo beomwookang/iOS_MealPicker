@@ -143,6 +143,7 @@ class ViewController: UIViewController {
         viewController.foodList = self.foodList
         viewController.optionType = nextOptionType
         viewController.validOptionIndices = [Int](0..<optionCaseCount[nextOptionType]!)    //every options for initial choice must be valid
+        viewController.oldProgress = 0.0
         viewController.modalPresentationStyle = .fullScreen
         self.configureTransition()
         self.present(viewController, animated: false)

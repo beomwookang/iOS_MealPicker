@@ -25,6 +25,26 @@ class FiveOptionsViewController: OptionViewController {
         self.checkIfLast()
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        if let progress = self.oldProgress {
+            self.progressBarView.progress = progress
+        }
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        self.updateProgress()
+    }
+
+    override func updateProgress() {
+        super.updateProgress()
+        guard let newProgress = self.newProgress else { return }
+        UIView.animate(withDuration: 0.5, animations: {
+            self.progressBarView.setProgress(newProgress, animated: true)
+        })
+    }
+    
     private func configureOptionView(view: UIView, touchHandler: Selector, optionImageName: String, optionLabel: String) {
         view.layer.shadowColor = UIColor.black.cgColor
         view.layer.shadowOffset = CGSize(width: 8, height: 8)
@@ -85,7 +105,7 @@ class FiveOptionsViewController: OptionViewController {
         guard let validOptionIndices = self.validOptionIndices, validOptionIndices.count == 5 else { return }
         guard let optionImageNames = optionCaseImageNames[optionType] else { return }
         guard let optionNames = optionCaseNames[optionType] else { return }
-
+        
         let firstOptionIndex: Int = validOptionIndices[0]
         let secondOptionIndex: Int = validOptionIndices[1]
         let thirdOptionIndex: Int = validOptionIndices[2]
