@@ -3,7 +3,7 @@
 <br>
 
 ## 시연 영상 (결과 이미지 미반영)
-![IOS_MealPicker_Demo](https://user-images.githubusercontent.com/30224335/200274163-c7abfc5f-b863-49d0-a631-27544b6ab98e.gif)
+![IOS_MealPicker_Demo_Updated](https://user-images.githubusercontent.com/30224335/200499904-9b52ea07-fccc-4756-a897-eb7065eda22c.gif)
 
 <br>
 
