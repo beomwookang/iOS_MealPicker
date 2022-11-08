@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		226AB1344047EE5AA81C1896 /* Pods_MealPicker.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FB8CAB3984EB95DB62AFBAC9 /* Pods_MealPicker.framework */; };
 		A856760D290D05E2007F8861 /* FoodDetail.swift in Sources */ = {isa = PBXBuildFile; fileRef = A856760C290D05E2007F8861 /* FoodDetail.swift */; };
 		A86C7E5F290F913300B971F8 /* FoodList.csv in Resources */ = {isa = PBXBuildFile; fileRef = A86C7E5E290F913300B971F8 /* FoodList.csv */; };
 		A879D87E2914EB90001EEC62 /* LoadingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A879D87D2914EB90001EEC62 /* LoadingViewController.swift */; };
@@ -18,6 +19,9 @@
 		A883B7C72914C5F00008808B /* ThreeOptionsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A883B7C62914C5F00008808B /* ThreeOptionsViewController.swift */; };
 		A883B7C92914D3900008808B /* FourOptionsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A883B7C82914D3900008808B /* FourOptionsViewController.swift */; };
 		A883B7CB2914D9D80008808B /* FiveOptionsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A883B7CA2914D9D80008808B /* FiveOptionsViewController.swift */; };
+		A8A3E6DA291A0E6A00EA68B7 /* result_pop.json in Resources */ = {isa = PBXBuildFile; fileRef = A8A3E6D9291A0E6900EA68B7 /* result_pop.json */; };
+		A8A3E6E2291A176200EA68B7 /* reroll_pop.json in Resources */ = {isa = PBXBuildFile; fileRef = A8A3E6E1291A176200EA68B7 /* reroll_pop.json */; };
+		A8A3E6E4291A189E00EA68B7 /* loading_thinking.json in Resources */ = {isa = PBXBuildFile; fileRef = A8A3E6E3291A189E00EA68B7 /* loading_thinking.json */; };
 		A8FD5A56290A5AC900BC4033 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8FD5A55290A5AC900BC4033 /* AppDelegate.swift */; };
 		A8FD5A58290A5AC900BC4033 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8FD5A57290A5AC900BC4033 /* SceneDelegate.swift */; };
 		A8FD5A5A290A5AC900BC4033 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8FD5A59290A5AC900BC4033 /* ViewController.swift */; };
@@ -27,6 +31,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		6B14FFBF5CEFF413B9AB8763 /* Pods-MealPicker.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MealPicker.debug.xcconfig"; path = "Target Support Files/Pods-MealPicker/Pods-MealPicker.debug.xcconfig"; sourceTree = "<group>"; };
+		72E7DFE80BAE13AF4F523323 /* Pods-MealPicker.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MealPicker.release.xcconfig"; path = "Target Support Files/Pods-MealPicker/Pods-MealPicker.release.xcconfig"; sourceTree = "<group>"; };
 		A856760C290D05E2007F8861 /* FoodDetail.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FoodDetail.swift; sourceTree = "<group>"; };
 		A86C7E5E290F913300B971F8 /* FoodList.csv */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = FoodList.csv; sourceTree = "<group>"; };
 		A879D87D2914EB90001EEC62 /* LoadingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingViewController.swift; sourceTree = "<group>"; };
@@ -38,6 +44,9 @@
 		A883B7C62914C5F00008808B /* ThreeOptionsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThreeOptionsViewController.swift; sourceTree = "<group>"; };
 		A883B7C82914D3900008808B /* FourOptionsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FourOptionsViewController.swift; sourceTree = "<group>"; };
 		A883B7CA2914D9D80008808B /* FiveOptionsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FiveOptionsViewController.swift; sourceTree = "<group>"; };
+		A8A3E6D9291A0E6900EA68B7 /* result_pop.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = result_pop.json; sourceTree = "<group>"; };
+		A8A3E6E1291A176200EA68B7 /* reroll_pop.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = reroll_pop.json; path = ../../../../../Downloads/reroll_pop.json; sourceTree = "<group>"; };
+		A8A3E6E3291A189E00EA68B7 /* loading_thinking.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = loading_thinking.json; sourceTree = "<group>"; };
 		A8FD5A52290A5AC900BC4033 /* MealPicker.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MealPicker.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A8FD5A55290A5AC900BC4033 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		A8FD5A57290A5AC900BC4033 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -46,6 +55,7 @@
 		A8FD5A5E290A5ACA00BC4033 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		A8FD5A61290A5ACA00BC4033 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		A8FD5A63290A5ACA00BC4033 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		FB8CAB3984EB95DB62AFBAC9 /* Pods_MealPicker.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MealPicker.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -53,17 +63,29 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				226AB1344047EE5AA81C1896 /* Pods_MealPicker.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		1EE1822E2C903C1D0EF3DAC6 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				FB8CAB3984EB95DB62AFBAC9 /* Pods_MealPicker.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		A8FD5A49290A5AC900BC4033 = {
 			isa = PBXGroup;
 			children = (
+				A883B7B62910EAE90008808B /* .swiftlint.yml */,
 				A8FD5A54290A5AC900BC4033 /* MealPicker */,
 				A8FD5A53290A5AC900BC4033 /* Products */,
+				FD992FD745844BBF14ADD2CA /* Pods */,
+				1EE1822E2C903C1D0EF3DAC6 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -78,6 +100,9 @@
 		A8FD5A54290A5AC900BC4033 /* MealPicker */ = {
 			isa = PBXGroup;
 			children = (
+				A8A3E6D9291A0E6900EA68B7 /* result_pop.json */,
+				A8A3E6E1291A176200EA68B7 /* reroll_pop.json */,
+				A8A3E6E3291A189E00EA68B7 /* loading_thinking.json */,
 				A86C7E5E290F913300B971F8 /* FoodList.csv */,
 				A8FD5A55290A5AC900BC4033 /* AppDelegate.swift */,
 				A8FD5A57290A5AC900BC4033 /* SceneDelegate.swift */,
@@ -86,7 +111,6 @@
 				A8FD5A60290A5ACA00BC4033 /* LaunchScreen.storyboard */,
 				A8FD5A63290A5ACA00BC4033 /* Info.plist */,
 				A856760C290D05E2007F8861 /* FoodDetail.swift */,
-				A883B7B62910EAE90008808B /* .swiftlint.yml */,
 				A8FD5A59290A5AC900BC4033 /* ViewController.swift */,
 				A883B7C229117B110008808B /* RoundImageView.swift */,
 				A87DB4D02916747900714BAC /* OptionViewController.swift */,
@@ -100,6 +124,15 @@
 			path = MealPicker;
 			sourceTree = "<group>";
 		};
+		FD992FD745844BBF14ADD2CA /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				6B14FFBF5CEFF413B9AB8763 /* Pods-MealPicker.debug.xcconfig */,
+				72E7DFE80BAE13AF4F523323 /* Pods-MealPicker.release.xcconfig */,
+			);
+			path = Pods;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -107,10 +140,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = A8FD5A66290A5ACA00BC4033 /* Build configuration list for PBXNativeTarget "MealPicker" */;
 			buildPhases = (
+				53DA0BE82F3A9CC7877B68C8 /* [CP] Check Pods Manifest.lock */,
 				A86C7E6C2910E96E00B971F8 /* ShellScript */,
 				A8FD5A4E290A5AC900BC4033 /* Sources */,
 				A8FD5A4F290A5AC900BC4033 /* Frameworks */,
 				A8FD5A50290A5AC900BC4033 /* Resources */,
+				0C2E92D10170A5203687A535 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -161,8 +196,11 @@
 			files = (
 				A883B7B72910EAE90008808B /* .swiftlint.yml in Resources */,
 				A8FD5A62290A5ACA00BC4033 /* LaunchScreen.storyboard in Resources */,
+				A8A3E6DA291A0E6A00EA68B7 /* result_pop.json in Resources */,
 				A8FD5A5F290A5ACA00BC4033 /* Assets.xcassets in Resources */,
 				A86C7E5F290F913300B971F8 /* FoodList.csv in Resources */,
+				A8A3E6E2291A176200EA68B7 /* reroll_pop.json in Resources */,
+				A8A3E6E4291A189E00EA68B7 /* loading_thinking.json in Resources */,
 				A8FD5A5D290A5AC900BC4033 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -170,6 +208,45 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
+		0C2E92D10170A5203687A535 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-MealPicker/Pods-MealPicker-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-MealPicker/Pods-MealPicker-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-MealPicker/Pods-MealPicker-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		53DA0BE82F3A9CC7877B68C8 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-MealPicker-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
 		A86C7E6C2910E96E00B971F8 /* ShellScript */ = {
 			isa = PBXShellScriptBuildPhase;
 			alwaysOutOfDate = 1;
@@ -348,6 +425,7 @@
 		};
 		A8FD5A67290A5ACA00BC4033 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 6B14FFBF5CEFF413B9AB8763 /* Pods-MealPicker.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -376,6 +454,7 @@
 		};
 		A8FD5A68290A5ACA00BC4033 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 72E7DFE80BAE13AF4F523323 /* Pods-MealPicker.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;

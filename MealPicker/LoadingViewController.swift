@@ -6,19 +6,22 @@
 //
 
 import UIKit
+import Lottie
 
 class LoadingViewController: UIViewController {
     @IBOutlet weak var loadingLabel: UILabel!
+    @IBOutlet weak var animationView: LottieAnimationView!
     
     var foodList: [FoodDetail]?
     var isRandom: Bool = false
     
-    var timeRemainingSeconds: Float = 1.5
+    var timeRemainingSeconds: Float = 2.5
     var timer: DispatchSourceTimer?
     
     override func viewDidLoad() {
         super.viewDidLoad()
         self.configureView()
+        showLottieAnimation()
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -48,6 +51,14 @@ class LoadingViewController: UIViewController {
         self.loadResult(foodList)
     }
     
+    func showLottieAnimation() {
+        self.animationView!.isHidden = false
+        self.animationView!.loopMode = .loop
+        self.animationView!.animationSpeed = 1.5
+        self.view.addSubview(self.animationView!)
+        self.animationView!.play()
+    }
+    
     private func configureLabel() {
         if self.isRandom {
             loadingLabel.font = UIFont.systemFont(ofSize: 35, weight: .bold)
@@ -63,6 +74,7 @@ class LoadingViewController: UIViewController {
     }
     
     private func loadResult(_ foodList: [FoodDetail]) {
+        self.animationView!.isHidden = true
         guard let viewController = self.storyboard?.instantiateViewController(withIdentifier: "ResultViewController") as? ResultViewController else { return }
         viewController.foodList = foodList
         viewController.modalPresentationStyle = .fullScreen

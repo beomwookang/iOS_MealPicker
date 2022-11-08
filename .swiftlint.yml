@@ -7,11 +7,11 @@ disabled_rules: #rules identifiers to exclude from running
   - comment_spacing
   - cyclomatic_complexity
   - function_body_length
-
+  
 identifier_name:
   allowed_symbols: "_"
   min_length: 1
-
+  
 opt_in_rules:
   # instead of .count==0 use .isEmpty
   - empty_count
