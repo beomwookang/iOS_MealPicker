@@ -17,6 +17,7 @@
 
 ### 3. 개발 단계
 - 체크리스트, 이슈 별 기능 추가 및 소스코드 관리
+- **주요 이슈**: 옵션 순서를 랜덤화 함에 따라, 다음 옵션의 선택지 결과를 미리 계산하여 선택지 갯수를 결정하고 그에 따른 뷰 컨트롤러를 표시 **([#20b0ce0](https://github.com/beomwookang/iOS_MealPicker/commit/20b0ce0ff70c84f90e321b2acdb46f93f1efd84c))**
 <img width="624" alt="Screen Shot 2022-11-07 at 6 01 50 PM" src="https://user-images.githubusercontent.com/30224335/200274280-a97af3e2-5044-4416-af18-aeb7e1c76fd2.png">
 
 ### 4. 구현 특징 (사용자 경험 최적화)
