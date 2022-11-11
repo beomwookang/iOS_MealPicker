@@ -1,9 +1,9 @@
-# iOS 프로젝트 - 1. 메뉴 추천 앱
+# iOS 프로젝트 - 음식 메뉴 추천 앱
 
 <br>
 
-## 시연 영상 (결과 이미지 미반영)
-![IOS_MealPicker_Demo_Updated](https://user-images.githubusercontent.com/30224335/200499904-9b52ea07-fccc-4756-a897-eb7065eda22c.gif)
+## 앱 실행 영상 (GIF)
+![IOS_MealPicker_Demo_Final2](https://user-images.githubusercontent.com/30224335/201288722-64bb7e4d-427b-47a4-9d39-c51a54013a37.gif)
 
 <br>
 
