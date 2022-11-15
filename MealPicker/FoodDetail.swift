@@ -72,19 +72,19 @@ enum CarbType: Int {
 }
 
 enum HasMeat: Int {
-    case meat, noMeat
+    case meat, noMeat, depends
 }
 
 enum MeatType: Int {
-    case pork, beef, chicken, others, NA
+    case pork, beef, chicken, others, NA, depends
 }
 
 enum HasSeafood: Int {
-    case seafood, noSeafood
+    case seafood, noSeafood, depends
 }
 
 enum SeafoodType: Int {
-    case fish, others, NA
+    case fish, others, NA, depends
 }
 
 enum OptionType: Any {
@@ -105,10 +105,10 @@ enum OptionType: Any {
         case .isHot: return foodDetail.isHot == IsHot(rawValue: choiceIndex) ? foodDetail : nil
         case .isSoup: return foodDetail.isSoup == IsSoup(rawValue: choiceIndex) ? foodDetail : nil
         case .carbType: return foodDetail.carbType == CarbType(rawValue: choiceIndex) ? foodDetail : nil
-        case .hasMeat: return foodDetail.hasMeat == HasMeat(rawValue: choiceIndex) ? foodDetail : nil
-        case .meatType: return foodDetail.meatType == MeatType(rawValue: choiceIndex) ? foodDetail : nil
-        case .hasSeafood: return foodDetail.hasSeafood == HasSeafood(rawValue: choiceIndex) ? foodDetail : nil
-        case .seafoodType: return foodDetail.seafoodType == SeafoodType(rawValue: choiceIndex) ? foodDetail : nil
+        case .hasMeat: return foodDetail.hasMeat == HasMeat(rawValue: choiceIndex) || foodDetail.hasMeat == .depends ? foodDetail : nil
+        case .meatType: return foodDetail.meatType == MeatType(rawValue: choiceIndex) || foodDetail.meatType == .depends ? foodDetail : nil
+        case .hasSeafood: return foodDetail.hasSeafood == HasSeafood(rawValue: choiceIndex) || foodDetail.hasSeafood == .depends ? foodDetail : nil
+        case .seafoodType: return foodDetail.seafoodType == SeafoodType(rawValue: choiceIndex) || foodDetail.seafoodType == .depends ? foodDetail : nil
         }
     }
     
@@ -117,14 +117,14 @@ enum OptionType: Any {
         for index in choiceIndices {
             switch self {
             case .country: if foodDetail.country == CountryType(rawValue: index) { isValid = true }
-            case .isSpicy: if foodDetail.isSpicy == IsSpicy(rawValue: index) { isValid = true }
+            case .isSpicy: if foodDetail.isSpicy == IsSpicy(rawValue: index) || foodDetail.isSpicy == .depends { isValid = true }
             case .isHot: if foodDetail.isHot == IsHot(rawValue: index) { isValid = true }
             case .isSoup: if foodDetail.isSoup == IsSoup(rawValue: index) { isValid = true }
             case .carbType: if foodDetail.carbType == CarbType(rawValue: index) { isValid = true }
-            case .hasMeat: if foodDetail.hasMeat == HasMeat(rawValue: index) { isValid = true }
-            case .meatType: if foodDetail.meatType == MeatType(rawValue: index) { isValid = true }
-            case .hasSeafood: if foodDetail.hasSeafood == HasSeafood(rawValue: index) { isValid = true }
-            case .seafoodType: if foodDetail.seafoodType == SeafoodType(rawValue: index) { isValid = true }
+            case .hasMeat: if foodDetail.hasMeat == HasMeat(rawValue: index) || foodDetail.hasMeat == .depends { isValid = true }
+            case .meatType: if foodDetail.meatType == MeatType(rawValue: index) || foodDetail.meatType == .depends { isValid = true }
+            case .hasSeafood: if foodDetail.hasSeafood == HasSeafood(rawValue: index) || foodDetail.hasSeafood == .depends { isValid = true }
+            case .seafoodType: if foodDetail.seafoodType == SeafoodType(rawValue: index) || foodDetail.seafoodType == .depends { isValid = true }
             }
         }
         return isValid ? foodDetail : nil

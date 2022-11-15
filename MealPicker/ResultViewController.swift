@@ -7,8 +7,9 @@
 
 import UIKit
 import Lottie
+import CoreLocation
 
-class ResultViewController: UIViewController {
+class ResultViewController: UIViewController, CLLocationManagerDelegate {
     @IBOutlet weak var resultLabel: UILabel!
     @IBOutlet weak var resultImageView: UIImageView! {
         didSet {
@@ -27,8 +28,16 @@ class ResultViewController: UIViewController {
     var foodList: [FoodDetail]?
     var foodResult: FoodDetail?
     
+    var locationManager: CLLocationManager!
+    var latitude: CLLocationDegrees?
+    var longitude: CLLocationDegrees?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.locationManager = CLLocationManager()
+        self.locationManager.delegate = self
+        self.locationManager.requestWhenInUseAuthorization()
+        
         self.pickFromList()
         self.configureView()
         guard let foodList = self.foodList else { return }
@@ -65,31 +74,31 @@ class ResultViewController: UIViewController {
         self.resultLabel.text = foodName
         self.resultLabel.font = UIFont.systemFont(ofSize: 30, weight: .semibold)
     }
-    
-    private func configureImageView(foodID: Int) {
-        self.resultImageView.image = UIImage(systemName: "xmark")?.withTintColor(.black)
-//        self.resultImageView.layer.shadowColor = UIColor.black.cgColor
-//        self.resultImageView.layer.shadowOffset = CGSize(width: 8, height: 8)
-//        self.resultImageView.layer.shadowRadius = 5
-//        self.resultImageView.layer.shadowOpacity = 0.3
-//        self.resultImageView.layer.cornerRadius = 20
-//        self.resultImageView.contentMode = .scaleAspectFill
-    }
-    
+
     private func configureView() {
         guard let foodResult = self.foodResult else { return }
         self.resultLabel.text = foodResult.name
         self.resultLabel.font = UIFont.systemFont(ofSize: 30, weight: .semibold)
         //self.resultImageView.image = UIImage(name: "fid@\(foodResult.foodID)") ?? UIImage(systemName: "xmark")?.withTintColor(.black)
-        self.resultImageView.image = UIImage(systemName: "xmark")?.withTintColor(.black)        //temporary image
+        //self.resultImageView.image = UIImage(systemName: "xmark")?.withTintColor(.black)        //temporary image
+        if let resultImage = UIImage(named: foodResult.name) {
+            self.resultImageView.image = resultImage
+        } else {
+            self.resultImageView.image = UIImage(systemName: "xmark")?.withTintColor(.black)
+        }
     }
     
     private func updateResultImage(foodID: Int) {
+        guard let foodResult = self.foodResult else { return }
         UIView.transition(with: self.resultImageView!,
                           duration: 0.5,
                                   options: .transitionCrossDissolve,
                                   animations: {
-            self.resultImageView?.image = UIImage(systemName: "xmark")?.withTintColor(.black)   //temporary image
+            if let resultImage = UIImage(named: foodResult.name) {
+                self.resultImageView.image = resultImage
+            } else {
+                self.resultImageView.image = UIImage(systemName: "xmark")?.withTintColor(.black)
+            }
                 }, completion: nil)
     }
     
@@ -102,6 +111,21 @@ class ResultViewController: UIViewController {
         self.view.window?.layer.add(transition, forKey: kCATransition)
     }
 
+    @IBAction func openMapButton(_ sender: UIButton) {
+        guard let latitude = self.latitude else { return }
+        guard let longitude = self.longitude else { return }
+        guard let resultFoodName = self.resultLabel?.text else { return }
+        if let encodedString = "kakaomap://search?q=\(resultFoodName)&p=\(latitude),\(longitude)".addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed) {
+            let url = URL(string: encodedString)
+            if UIApplication.shared.canOpenURL(URL(string: "kakaomap://")!) {
+                UIApplication.shared.open(url!, options: [:], completionHandler: nil)
+            } else {
+                print("can't use kakao map")
+            }
+        }
+
+    }
+    
     @IBAction func returnButtonTap(_ sender: UIButton) {
         self.configureTransitionToRoot()
         self.view.window?.rootViewController?.dismiss(animated: true)
@@ -117,5 +141,37 @@ class ResultViewController: UIViewController {
         if foodList.isEmpty {
                 self.rerollButton.isHidden = true
         }
+    }
+}
+
+extension ResultViewController {
+    
+    func locationManager(_ manager: CLLocationManager, didChangeAuthorization status: CLAuthorizationStatus) {
+        switch status {
+        case .authorizedAlways, .authorizedWhenInUse:
+            print("GPS 권한 설정됨")
+            self.locationManager.startUpdatingLocation() // 중요!
+        case .restricted, .notDetermined:
+            print("GPS 권한 설정되지 않음")
+            self.locationManager.requestWhenInUseAuthorization()
+            self.locationManager.startUpdatingLocation()
+        case .denied:
+            print("GPS 권한 요청 거부됨")
+            self.locationManager.requestWhenInUseAuthorization()
+        default:
+            print("GPS: Default")
+        }
+    }
+    
+    func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
+        if let location = locations.first {
+            self.latitude = location.coordinate.latitude
+            self.longitude = location.coordinate.longitude
+        }
+    }
+        
+    // 위치 가져오기 실패
+    func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {
+        print(error)
     }
 }

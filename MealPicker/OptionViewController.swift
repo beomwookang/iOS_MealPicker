@@ -86,9 +86,9 @@ class OptionViewController: UIViewController {
     
     func pickOptionType(optionIndex: Int) {
         guard let optionType = self.optionType else { return }
-        if optionType == .hasMeat && optionIndex == 0 {                 //if choice was to have meat
+        if optionType == .hasMeat && (optionIndex == 0 || optionIndex == 2) {                 //if choice was to have meat
             self.nextOptionType = .meatType
-        } else if optionType == .hasSeafood && optionIndex == 0 {       //if choice was to have seafood
+        } else if optionType == .hasSeafood && (optionIndex == 0 || optionIndex == 2) {       //if choice was to have seafood
             self.nextOptionType = .seafoodType
         } else {
             guard var remainingOptionList = self.remainingOptionList else { return }
@@ -102,9 +102,9 @@ class OptionViewController: UIViewController {
     
     func pickOptionType(optionIndices: [Int]) {
         guard let optionType = self.optionType else { return }
-        if optionType == .hasMeat && optionIndices.contains(0) {                 //if choice was to have meat
+        if optionType == .hasMeat && (optionIndices.contains(0) || optionIndices.contains(2)) {                 //if choice was to have meat
             self.nextOptionType = .meatType
-        } else if optionType == .hasSeafood && optionIndices.contains(0) {       //if choice was to have seafood
+        } else if optionType == .hasSeafood && (optionIndices.contains(0) || optionIndices.contains(2)) {       //if choice was to have seafood
             self.nextOptionType = .seafoodType
         } else {
             guard var remainingOptionList = self.remainingOptionList else { return }

@@ -2,6 +2,20 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
+	<key>LSApplicationQueriesSchemes</key>
+	<array>
+		<string>kakaomap</string>
+	</array>
+	<key>CFBundleIdentifier</key>
+	<string>com.bammoothe.MealPicker</string>
+	<key>NSLocationAlwaysUsageDescription</key>
+	<string>사용자의 위치 정보를 받아오려고 합니다.</string>
+	<key>NSLocationWhenInUseUsageDescription</key>
+	<string>사용자의 위치 정보를 받아오려고 합니다.</string>
+	<key>NSLocationAlwaysAndWhenInUseUsageDescription</key>
+	<string>사용자의 위치 정보를 받아오려고 합니다.</string>
+	<key>KAKAO_APP_KEY</key>
+	<string>50e67576a4f3ddd2926e3fc80a783b7b</string>
 	<key>UIApplicationSceneManifest</key>
 	<dict>
 		<key>UIApplicationSupportsMultipleScenes</key>
