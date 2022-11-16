@@ -1,9 +1,12 @@
-# iOS 프로젝트 - 음식 메뉴 선택 앱
+# iOS 프로젝트 - 뭐먹: 음식 메뉴 선택 앱
+
+![sample_icon](https://user-images.githubusercontent.com/30224335/202124389-6c49e41a-62ec-47b1-856b-6ac3a3e75d6d.png)
 
 <br>
 
+
 ## 앱 실행 영상 (GIF)
-![IOS_MealPicker_Demo_Final2](https://user-images.githubusercontent.com/30224335/201288722-64bb7e4d-427b-47a4-9d39-c51a54013a37.gif)
+![MealPicker_1116](https://user-images.githubusercontent.com/30224335/202123068-454aff84-e0e5-4536-8ec3-f5105b8e075c.gif)
 
 <br>
 
@@ -22,6 +25,12 @@
 
 ### 4. 구현 특징 (사용자 경험 최적화)
 
+- 사용 기술: 
+  - Swift, UIKit: UI 및 로직 구현
+  - Lottie: 벡터 애니메이션 적용
+  - KakaoMap API: GPS 현위치 기반 결과 음식에 대한 주변 식당 검색
+  - SwiftLint: 클린 코드 유지
+
 - **다이나믹한 선택 경험**을 위해 선택지 제시 순서 랜덤화
 
 ![random_option_order](https://user-images.githubusercontent.com/30224335/200274322-7b9bb87f-55f0-4a54-8420-7b6559207e3d.jpg)
@@ -30,4 +39,4 @@
 
 ![dynamic_option_count](https://user-images.githubusercontent.com/30224335/200274342-dd655c2e-d075-4d58-9e14-6d0f3e2d569c.jpg)
 
-- 선택지에 따라 시간 제한을 두어 고민 과정을 단축
+- 선택지에 따라 시간 제한을 두어 고민 과정을 단축 
