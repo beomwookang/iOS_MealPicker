@@ -10,7 +10,7 @@ import Lottie
 
 class LoadingViewController: UIViewController {
     @IBOutlet weak var loadingLabel: UILabel!
-    @IBOutlet weak var animationView: LottieAnimationView!
+    @IBOutlet var animationView: LottieAnimationView!
     
     var foodList: [FoodDetail]?
     var isRandom: Bool = false
@@ -52,6 +52,9 @@ class LoadingViewController: UIViewController {
     }
     
     func showLottieAnimation() {
+        let loadAnimationList = ["thinking", "cooking"]
+        let randomAnimation = LottieAnimation.named("loading_\(loadAnimationList.randomElement()!)")
+        self.animationView!.animation = randomAnimation
         self.animationView!.isHidden = false
         self.animationView!.loopMode = .loop
         self.animationView!.animationSpeed = 1.5

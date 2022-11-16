@@ -10,6 +10,7 @@
 		226AB1344047EE5AA81C1896 /* Pods_MealPicker.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FB8CAB3984EB95DB62AFBAC9 /* Pods_MealPicker.framework */; };
 		A856760D290D05E2007F8861 /* FoodDetail.swift in Sources */ = {isa = PBXBuildFile; fileRef = A856760C290D05E2007F8861 /* FoodDetail.swift */; };
 		A86C7E5F290F913300B971F8 /* FoodList.csv in Resources */ = {isa = PBXBuildFile; fileRef = A86C7E5E290F913300B971F8 /* FoodList.csv */; };
+		A876696C2924AE3600AE822E /* loading_cooking.json in Resources */ = {isa = PBXBuildFile; fileRef = A876696B2924AE3500AE822E /* loading_cooking.json */; };
 		A879D87E2914EB90001EEC62 /* LoadingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A879D87D2914EB90001EEC62 /* LoadingViewController.swift */; };
 		A879D8802914EF81001EEC62 /* ResultViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A879D87F2914EF81001EEC62 /* ResultViewController.swift */; };
 		A87DB4D12916747900714BAC /* OptionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A87DB4D02916747900714BAC /* OptionViewController.swift */; };
@@ -36,6 +37,7 @@
 		72E7DFE80BAE13AF4F523323 /* Pods-MealPicker.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MealPicker.release.xcconfig"; path = "Target Support Files/Pods-MealPicker/Pods-MealPicker.release.xcconfig"; sourceTree = "<group>"; };
 		A856760C290D05E2007F8861 /* FoodDetail.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FoodDetail.swift; sourceTree = "<group>"; };
 		A86C7E5E290F913300B971F8 /* FoodList.csv */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = FoodList.csv; sourceTree = "<group>"; };
+		A876696B2924AE3500AE822E /* loading_cooking.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = loading_cooking.json; path = ../../../../../Downloads/loading_cooking.json; sourceTree = "<group>"; };
 		A879D87D2914EB90001EEC62 /* LoadingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingViewController.swift; sourceTree = "<group>"; };
 		A879D87F2914EF81001EEC62 /* ResultViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultViewController.swift; sourceTree = "<group>"; };
 		A87DB4D02916747900714BAC /* OptionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OptionViewController.swift; sourceTree = "<group>"; };
@@ -107,6 +109,7 @@
 				A8A3E6D9291A0E6900EA68B7 /* result_pop.json */,
 				A8A3E6E1291A176200EA68B7 /* reroll_pop.json */,
 				A8A3E6E3291A189E00EA68B7 /* loading_thinking.json */,
+				A876696B2924AE3500AE822E /* loading_cooking.json */,
 				A86C7E5E290F913300B971F8 /* FoodList.csv */,
 				A8FD5A55290A5AC900BC4033 /* AppDelegate.swift */,
 				A8FD5A57290A5AC900BC4033 /* SceneDelegate.swift */,
@@ -200,6 +203,7 @@
 			files = (
 				A883B7B72910EAE90008808B /* .swiftlint.yml in Resources */,
 				A8FD5A62290A5ACA00BC4033 /* LaunchScreen.storyboard in Resources */,
+				A876696C2924AE3600AE822E /* loading_cooking.json in Resources */,
 				A8A3E6DA291A0E6A00EA68B7 /* result_pop.json in Resources */,
 				A8FD5A5F290A5ACA00BC4033 /* Assets.xcassets in Resources */,
 				A86C7E5F290F913300B971F8 /* FoodList.csv in Resources */,
@@ -436,9 +440,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = R2GZZFQ97T;
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(inherited)",
-				);
+				FRAMEWORK_SEARCH_PATHS = "$(inherited)";
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = MealPicker/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = "뭐먹";
@@ -470,9 +472,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = R2GZZFQ97T;
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(inherited)",
-				);
+				FRAMEWORK_SEARCH_PATHS = "$(inherited)";
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = MealPicker/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = "뭐먹";
