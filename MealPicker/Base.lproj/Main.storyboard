@@ -373,7 +373,7 @@
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="lKX-xQ-hSa">
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="NoImage" translatesAutoresizingMaskIntoConstraints="NO" id="lKX-xQ-hSa">
                                         <rect key="frame" x="0.0" y="65.999999999999972" width="279.33333333333331" height="279.33333333333326"/>
                                         <constraints>
                                             <constraint firstAttribute="width" secondItem="lKX-xQ-hSa" secondAttribute="height" id="acQ-fe-fAs"/>
@@ -705,6 +705,7 @@
         <image name="BackgroundImage" width="426.66665649414062" height="319.66665649414062"/>
         <image name="MainBibimbap" width="100" height="100"/>
         <image name="MapMarker" width="24" height="24"/>
+        <image name="NoImage" width="512" height="512"/>
         <image name="house" catalog="system" width="128" height="104"/>
         <image name="info.circle" catalog="system" width="128" height="123"/>
         <image name="repeat" catalog="system" width="128" height="98"/>

@@ -84,7 +84,7 @@ class ResultViewController: UIViewController, CLLocationManagerDelegate {
         if let resultImage = UIImage(named: foodResult.name) {
             self.resultImageView.image = resultImage
         } else {
-            self.resultImageView.image = UIImage(systemName: "xmark")?.withTintColor(.black)
+            self.resultImageView.image = UIImage(named: "NoImage")
         }
     }
     
@@ -97,7 +97,7 @@ class ResultViewController: UIViewController, CLLocationManagerDelegate {
             if let resultImage = UIImage(named: foodResult.name) {
                 self.resultImageView.image = resultImage
             } else {
-                self.resultImageView.image = UIImage(systemName: "xmark")?.withTintColor(.black)
+                self.resultImageView.image = UIImage(named: "NoImage")
             }
                 }, completion: nil)
     }
