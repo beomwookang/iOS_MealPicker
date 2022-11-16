@@ -11,6 +11,8 @@
 		A856760D290D05E2007F8861 /* FoodDetail.swift in Sources */ = {isa = PBXBuildFile; fileRef = A856760C290D05E2007F8861 /* FoodDetail.swift */; };
 		A86C7E5F290F913300B971F8 /* FoodList.csv in Resources */ = {isa = PBXBuildFile; fileRef = A86C7E5E290F913300B971F8 /* FoodList.csv */; };
 		A876696C2924AE3600AE822E /* loading_cooking.json in Resources */ = {isa = PBXBuildFile; fileRef = A876696B2924AE3500AE822E /* loading_cooking.json */; };
+		A876696E2924B3C300AE822E /* loading_cooking2.json in Resources */ = {isa = PBXBuildFile; fileRef = A876696D2924B3C300AE822E /* loading_cooking2.json */; };
+		A87669702924B41D00AE822E /* loading_thinking.json in Resources */ = {isa = PBXBuildFile; fileRef = A876696F2924B41D00AE822E /* loading_thinking.json */; };
 		A879D87E2914EB90001EEC62 /* LoadingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A879D87D2914EB90001EEC62 /* LoadingViewController.swift */; };
 		A879D8802914EF81001EEC62 /* ResultViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A879D87F2914EF81001EEC62 /* ResultViewController.swift */; };
 		A87DB4D12916747900714BAC /* OptionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A87DB4D02916747900714BAC /* OptionViewController.swift */; };
@@ -22,7 +24,6 @@
 		A883B7CB2914D9D80008808B /* FiveOptionsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A883B7CA2914D9D80008808B /* FiveOptionsViewController.swift */; };
 		A8A3E6DA291A0E6A00EA68B7 /* result_pop.json in Resources */ = {isa = PBXBuildFile; fileRef = A8A3E6D9291A0E6900EA68B7 /* result_pop.json */; };
 		A8A3E6E2291A176200EA68B7 /* reroll_pop.json in Resources */ = {isa = PBXBuildFile; fileRef = A8A3E6E1291A176200EA68B7 /* reroll_pop.json */; };
-		A8A3E6E4291A189E00EA68B7 /* loading_thinking.json in Resources */ = {isa = PBXBuildFile; fileRef = A8A3E6E3291A189E00EA68B7 /* loading_thinking.json */; };
 		A8E98E76292394450031B854 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A8E98E75292394450031B854 /* CoreLocation.framework */; };
 		A8FD5A56290A5AC900BC4033 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8FD5A55290A5AC900BC4033 /* AppDelegate.swift */; };
 		A8FD5A58290A5AC900BC4033 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8FD5A57290A5AC900BC4033 /* SceneDelegate.swift */; };
@@ -38,6 +39,8 @@
 		A856760C290D05E2007F8861 /* FoodDetail.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FoodDetail.swift; sourceTree = "<group>"; };
 		A86C7E5E290F913300B971F8 /* FoodList.csv */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = FoodList.csv; sourceTree = "<group>"; };
 		A876696B2924AE3500AE822E /* loading_cooking.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = loading_cooking.json; path = ../../../../../Downloads/loading_cooking.json; sourceTree = "<group>"; };
+		A876696D2924B3C300AE822E /* loading_cooking2.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = loading_cooking2.json; path = ../../../../../Downloads/loading_cooking2.json; sourceTree = "<group>"; };
+		A876696F2924B41D00AE822E /* loading_thinking.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = loading_thinking.json; path = ../../../../../Downloads/loading_thinking.json; sourceTree = "<group>"; };
 		A879D87D2914EB90001EEC62 /* LoadingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingViewController.swift; sourceTree = "<group>"; };
 		A879D87F2914EF81001EEC62 /* ResultViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultViewController.swift; sourceTree = "<group>"; };
 		A87DB4D02916747900714BAC /* OptionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OptionViewController.swift; sourceTree = "<group>"; };
@@ -49,7 +52,6 @@
 		A883B7CA2914D9D80008808B /* FiveOptionsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FiveOptionsViewController.swift; sourceTree = "<group>"; };
 		A8A3E6D9291A0E6900EA68B7 /* result_pop.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = result_pop.json; sourceTree = "<group>"; };
 		A8A3E6E1291A176200EA68B7 /* reroll_pop.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = reroll_pop.json; path = ../../../../../Downloads/reroll_pop.json; sourceTree = "<group>"; };
-		A8A3E6E3291A189E00EA68B7 /* loading_thinking.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = loading_thinking.json; sourceTree = "<group>"; };
 		A8E98E75292394450031B854 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
 		A8FD5A52290A5AC900BC4033 /* MealPicker.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MealPicker.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A8FD5A55290A5AC900BC4033 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -108,8 +110,9 @@
 			children = (
 				A8A3E6D9291A0E6900EA68B7 /* result_pop.json */,
 				A8A3E6E1291A176200EA68B7 /* reroll_pop.json */,
-				A8A3E6E3291A189E00EA68B7 /* loading_thinking.json */,
+				A876696F2924B41D00AE822E /* loading_thinking.json */,
 				A876696B2924AE3500AE822E /* loading_cooking.json */,
+				A876696D2924B3C300AE822E /* loading_cooking2.json */,
 				A86C7E5E290F913300B971F8 /* FoodList.csv */,
 				A8FD5A55290A5AC900BC4033 /* AppDelegate.swift */,
 				A8FD5A57290A5AC900BC4033 /* SceneDelegate.swift */,
@@ -202,13 +205,14 @@
 			buildActionMask = 2147483647;
 			files = (
 				A883B7B72910EAE90008808B /* .swiftlint.yml in Resources */,
+				A87669702924B41D00AE822E /* loading_thinking.json in Resources */,
 				A8FD5A62290A5ACA00BC4033 /* LaunchScreen.storyboard in Resources */,
 				A876696C2924AE3600AE822E /* loading_cooking.json in Resources */,
 				A8A3E6DA291A0E6A00EA68B7 /* result_pop.json in Resources */,
 				A8FD5A5F290A5ACA00BC4033 /* Assets.xcassets in Resources */,
 				A86C7E5F290F913300B971F8 /* FoodList.csv in Resources */,
 				A8A3E6E2291A176200EA68B7 /* reroll_pop.json in Resources */,
-				A8A3E6E4291A189E00EA68B7 /* loading_thinking.json in Resources */,
+				A876696E2924B3C300AE822E /* loading_cooking2.json in Resources */,
 				A8FD5A5D290A5AC900BC4033 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

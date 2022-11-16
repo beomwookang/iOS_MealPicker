@@ -326,7 +326,7 @@
                                     <constraint firstAttribute="width" secondItem="Qf3-fa-Wvu" secondAttribute="height" id="hEG-as-Qf1"/>
                                 </constraints>
                                 <userDefinedRuntimeAttributes>
-                                    <userDefinedRuntimeAttribute type="string" keyPath="animationName" value="loading_cooking"/>
+                                    <userDefinedRuntimeAttribute type="string" keyPath="animationName" value="loading_thinking"/>
                                 </userDefinedRuntimeAttributes>
                             </view>
                         </subviews>

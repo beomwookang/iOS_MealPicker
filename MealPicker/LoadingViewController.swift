@@ -12,6 +12,8 @@ class LoadingViewController: UIViewController {
     @IBOutlet weak var loadingLabel: UILabel!
     @IBOutlet var animationView: LottieAnimationView!
     
+    let loadAnimationList = ["thinking", "cooking", "cooking2"]
+    
     var foodList: [FoodDetail]?
     var isRandom: Bool = false
     
@@ -21,11 +23,11 @@ class LoadingViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.configureView()
-        showLottieAnimation()
     }
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
+        showLottieAnimation()
         self.startTimer()
     }
     
@@ -52,8 +54,7 @@ class LoadingViewController: UIViewController {
     }
     
     func showLottieAnimation() {
-        let loadAnimationList = ["thinking", "cooking"]
-        let randomAnimation = LottieAnimation.named("loading_\(loadAnimationList.randomElement()!)")
+        let randomAnimation = LottieAnimation.named("loading_\(self.loadAnimationList.randomElement()!)")
         self.animationView!.animation = randomAnimation
         self.animationView!.isHidden = false
         self.animationView!.loopMode = .loop
