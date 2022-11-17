@@ -24,6 +24,7 @@ class ResultViewController: UIViewController, CLLocationManagerDelegate {
     @IBOutlet weak var rerollButton: UIButton!
     
     private var animationView: LottieAnimationView?
+    var alertController: UIAlertController?
     
     var foodList: [FoodDetail]?
     var foodResult: FoodDetail?
@@ -47,6 +48,7 @@ class ResultViewController: UIViewController, CLLocationManagerDelegate {
             self.rerollButton.isHidden = false
         }
         self.showLottieAnimation("result_pop", .scaleAspectFill, 1.5)
+        self.configureAlert()
     }
     
     func showLottieAnimation(_ name: String, _ contentMode: UIView.ContentMode, _ speed: CGFloat) {
@@ -68,6 +70,11 @@ class ResultViewController: UIViewController, CLLocationManagerDelegate {
             self.foodResult = foodResult
             self.foodList = foodList
         }
+    }
+    
+    private func configureAlert() {
+        self.alertController = UIAlertController(title: "위치정보 이용 동의", message: "[설정 - 개인정보 보호 - 위치 서비스]에서\n 앱 위치 접근 권한을 설정해주세요:)", preferredStyle: .alert)
+        self.alertController?.addAction(UIAlertAction(title: "확인", style: .default, handler: nil))
     }
     
     private func configureLabel(foodName: String) {
@@ -112,18 +119,22 @@ class ResultViewController: UIViewController, CLLocationManagerDelegate {
     }
 
     @IBAction func openMapButton(_ sender: UIButton) {
-        guard let latitude = self.latitude else { return }
-        guard let longitude = self.longitude else { return }
-        guard let resultFoodName = self.resultLabel?.text else { return }
-        if let encodedString = "kakaomap://search?q=\(resultFoodName)&p=\(latitude),\(longitude)".addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed) {
-            let url = URL(string: encodedString)
-            if UIApplication.shared.canOpenURL(URL(string: "kakaomap://")!) {
-                UIApplication.shared.open(url!, options: [:], completionHandler: nil)
-            } else {
-                print("can't use kakao map")
+        if self.locationManager.authorizationStatus == .authorizedAlways || self.locationManager.authorizationStatus == .authorizedWhenInUse {
+            guard let latitude = self.latitude else { return }
+            guard let longitude = self.longitude else { return }
+            guard let resultFoodName = self.resultLabel?.text else { return }
+            if let encodedString = "kakaomap://search?q=\(resultFoodName)&p=\(latitude),\(longitude)".addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed) {
+                let url = URL(string: encodedString)
+                if UIApplication.shared.canOpenURL(URL(string: "kakaomap://")!) {
+                    UIApplication.shared.open(url!, options: [:], completionHandler: nil)
+                } else {
+                    print("can't use kakao map")
+                }
             }
+        } else {
+            guard let alertController = self.alertController else { return }
+            self.present(alertController, animated: true)
         }
-
     }
     
     @IBAction func returnButtonTap(_ sender: UIButton) {
