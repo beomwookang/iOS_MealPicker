@@ -125,10 +125,30 @@ class ResultViewController: UIViewController, CLLocationManagerDelegate {
             guard let resultFoodName = self.resultLabel?.text else { return }
             if let encodedString = "kakaomap://search?q=\(resultFoodName)&p=\(latitude),\(longitude)".addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed) {
                 let url = URL(string: encodedString)
+                let appStoreURL = URL(string: "https://itunes.apple.com/app/id304608425?mt=8")!
                 if UIApplication.shared.canOpenURL(URL(string: "kakaomap://")!) {
                     UIApplication.shared.open(url!, options: [:], completionHandler: nil)
                 } else {
-                    print("can't use kakao map")
+                    UIApplication.shared.open(appStoreURL)
+                }
+            }
+        } else {
+            guard let alertController = self.alertController else { return }
+            self.present(alertController, animated: true)
+        }
+    }
+    
+    @IBAction func openNMapButton(_ sender: UIButton) {
+        if self.locationManager.authorizationStatus == .authorizedAlways || self.locationManager.authorizationStatus == .authorizedWhenInUse {
+            guard let resultFoodName = self.resultLabel?.text else { return }
+            if let encodedString = "nmap://search?query=\(resultFoodName)&appname=com.bammoothe.MealPicker"
+.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed) {
+                let url = URL(string: encodedString)
+                let appStoreURL = URL(string: "http://itunes.apple.com/app/id311867728?mt=8")!
+                if UIApplication.shared.canOpenURL(URL(string: "nmap://")!) {
+                    UIApplication.shared.open(url!, options: [:], completionHandler: nil)
+                } else {
+                    UIApplication.shared.open(appStoreURL)
                 }
             }
         } else {

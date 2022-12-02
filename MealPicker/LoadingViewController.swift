@@ -12,6 +12,7 @@ class LoadingViewController: UIViewController {
     @IBOutlet weak var loadingLabel: UILabel!
     @IBOutlet var animationView: LottieAnimationView!
     
+    let weightedPossibility: [Int] = Array(1...10)
     let loadAnimationList = ["thinking", "cooking", "cooking2"]
     
     var foodList: [FoodDetail]?
@@ -54,7 +55,19 @@ class LoadingViewController: UIViewController {
     }
     
     func showLottieAnimation() {
-        let randomAnimation = LottieAnimation.named("loading_\(self.loadAnimationList.randomElement()!)")
+        let randomElem: Int = self.weightedPossibility.randomElement()!
+        var lottieName: String = "thinking"
+        switch randomElem {                         //For weighted randomisation
+        case 1, 2, 3, 4, 5:
+            lottieName = "thinking"
+        case 6, 7, 8:
+            lottieName = "cooking"
+        case 9, 10:
+            lottieName = "cooking2"
+        default:
+            lottieName = "thinking"
+        }
+        let randomAnimation = LottieAnimation.named("loading_\(lottieName)")
         self.animationView!.animation = randomAnimation
         self.animationView!.isHidden = false
         self.animationView!.loopMode = .loop
