@@ -1,6 +1,6 @@
 # iOS 프로젝트 - 뭐먹: 음식 메뉴 선택 앱
 
-![sample_icon](https://user-images.githubusercontent.com/30224335/202124389-6c49e41a-62ec-47b1-856b-6ac3a3e75d6d.png)
+![forRepo](https://user-images.githubusercontent.com/30224335/205224523-79e485e2-4e39-4592-95a3-dcd7d5dfb66d.png)
 
 <br>
 
