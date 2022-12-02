@@ -24,6 +24,7 @@
 		A8CBE3432939A32F00A1593E /* loading_cooking.json in Resources */ = {isa = PBXBuildFile; fileRef = A8CBE3402939A32F00A1593E /* loading_cooking.json */; };
 		A8CBE3442939A32F00A1593E /* loading_cooking2.json in Resources */ = {isa = PBXBuildFile; fileRef = A8CBE3412939A32F00A1593E /* loading_cooking2.json */; };
 		A8CBE3452939A32F00A1593E /* loading_thinking.json in Resources */ = {isa = PBXBuildFile; fileRef = A8CBE3422939A32F00A1593E /* loading_thinking.json */; };
+		A8CBE3472939BA4300A1593E /* InfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8CBE3462939BA4300A1593E /* InfoViewController.swift */; };
 		A8E98E76292394450031B854 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A8E98E75292394450031B854 /* CoreLocation.framework */; };
 		A8FD5A56290A5AC900BC4033 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8FD5A55290A5AC900BC4033 /* AppDelegate.swift */; };
 		A8FD5A58290A5AC900BC4033 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8FD5A57290A5AC900BC4033 /* SceneDelegate.swift */; };
@@ -52,6 +53,7 @@
 		A8CBE3402939A32F00A1593E /* loading_cooking.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = loading_cooking.json; sourceTree = "<group>"; };
 		A8CBE3412939A32F00A1593E /* loading_cooking2.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = loading_cooking2.json; sourceTree = "<group>"; };
 		A8CBE3422939A32F00A1593E /* loading_thinking.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = loading_thinking.json; sourceTree = "<group>"; };
+		A8CBE3462939BA4300A1593E /* InfoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoViewController.swift; sourceTree = "<group>"; };
 		A8E98E75292394450031B854 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
 		A8FD5A52290A5AC900BC4033 /* MealPicker.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MealPicker.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A8FD5A55290A5AC900BC4033 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -122,6 +124,7 @@
 				A8FD5A63290A5ACA00BC4033 /* Info.plist */,
 				A856760C290D05E2007F8861 /* FoodDetail.swift */,
 				A8FD5A59290A5AC900BC4033 /* ViewController.swift */,
+				A8CBE3462939BA4300A1593E /* InfoViewController.swift */,
 				A883B7C229117B110008808B /* RoundImageView.swift */,
 				A87DB4D02916747900714BAC /* OptionViewController.swift */,
 				A883B7BA291105650008808B /* TwoOptionsViewController.swift */,
@@ -293,6 +296,7 @@
 				A856760D290D05E2007F8861 /* FoodDetail.swift in Sources */,
 				A883B7BB291105650008808B /* TwoOptionsViewController.swift in Sources */,
 				A879D87E2914EB90001EEC62 /* LoadingViewController.swift in Sources */,
+				A8CBE3472939BA4300A1593E /* InfoViewController.swift in Sources */,
 				A8FD5A58290A5AC900BC4033 /* SceneDelegate.swift in Sources */,
 				A883B7C329117B110008808B /* RoundImageView.swift in Sources */,
 				A879D8802914EF81001EEC62 /* ResultViewController.swift in Sources */,
@@ -461,6 +465,9 @@
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.bammoothe.MealPicker;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 1;
@@ -493,6 +500,9 @@
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.bammoothe.MealPicker;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 1;

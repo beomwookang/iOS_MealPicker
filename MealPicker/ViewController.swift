@@ -124,9 +124,9 @@ class ViewController: UIViewController {
     }
     
     private func configureButtons() {
-        self.configureButtonShadow(self.mainInfoButton, CGSize(width: 4, height: 4), CGFloat(4), 0.25)
         self.configureButtonShadow(self.mainBeginButton, CGSize(width: 8, height: 8), CGFloat(6), 0.25)
         self.configureButtonShadow(self.mainRandomButton, CGSize(width: 6, height: 6), CGFloat(5), 0.25)
+        self.configureButtonShadow(self.mainInfoButton, CGSize(width: 3, height: 3), CGFloat(5), 0.25)
     }
 
     private func configureView() {
@@ -202,6 +202,12 @@ class ViewController: UIViewController {
         viewController.modalPresentationStyle = .fullScreen
         self.configureTransition()
         self.present(viewController, animated: false)
+    }
+    
+    @IBAction func infoButtonTap(_ sender: UIButton) {
+        guard let viewController = self.storyboard?.instantiateViewController(withIdentifier: "InfoViewController") as? InfoViewController else { return }
+        viewController.modalPresentationStyle = .pageSheet
+        self.present(viewController, animated: true)
     }
 }
 
