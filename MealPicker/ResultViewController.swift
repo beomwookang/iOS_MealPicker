@@ -8,6 +8,7 @@
 import UIKit
 import Lottie
 import CoreLocation
+import SwiftRater
 
 class ResultViewController: UIViewController, CLLocationManagerDelegate {
     @IBOutlet weak var resultLabel: UILabel!
@@ -49,6 +50,12 @@ class ResultViewController: UIViewController, CLLocationManagerDelegate {
         }
         self.showLottieAnimation("result_pop", .scaleAspectFill, 1.5)
         self.configureAlert()
+        SwiftRater.incrementSignificantUsageCount()
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        SwiftRater.check()
     }
     
     func showLottieAnimation(_ name: String, _ contentMode: UIView.ContentMode, _ speed: CGFloat) {
@@ -172,6 +179,26 @@ class ResultViewController: UIViewController, CLLocationManagerDelegate {
         if foodList.isEmpty {
                 self.rerollButton.isHidden = true
         }
+    }
+    
+    @IBAction func shareButton(_ sender: UIButton) {
+        UIGraphicsBeginImageContext(self.view.frame.size)
+        guard let currentContext = UIGraphicsGetCurrentContext() else { return }
+        self.view.layer.render(in: currentContext)
+        guard let image = UIGraphicsGetImageFromCurrentImageContext() else { return }
+        let imageRef = image.cgImage!.cropping(to: self.view.safeAreaLayoutGuide.layoutFrame)
+        let newImage = UIImage(cgImage: imageRef!, scale: image.scale, orientation: image.imageOrientation)
+        UIGraphicsEndImageContext()
+        var imagesToShare = [AnyObject]()
+        imagesToShare.append(newImage)
+
+        let activityViewController = UIActivityViewController(activityItems: imagesToShare, applicationActivities: nil)
+        activityViewController.popoverPresentationController?.sourceView = self.view
+        self.present(activityViewController, animated: true, completion: nil)
+    }
+    
+    @IBAction func rateButtonTap(_ sender: UIButton) {
+        SwiftRater.rateApp()
     }
 }
 
