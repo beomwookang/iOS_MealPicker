@@ -1,20 +1,16 @@
 PODS:
   - lottie-ios (3.5.0)
-  - SwiftRater (2.1.0)
 
 DEPENDENCIES:
   - lottie-ios
-  - SwiftRater
 
 SPEC REPOS:
   trunk:
     - lottie-ios
-    - SwiftRater
 
 SPEC CHECKSUMS:
   lottie-ios: c55158d67d0629a260625cc2ded2052b829e3c3e
-  SwiftRater: 23f3c60a468daf3cad69447b67e42d6f5261331f
 
-PODFILE CHECKSUM: 0e2733af2d98fff188daf32f58ad9f53cbceee81
+PODFILE CHECKSUM: c41f70845cb16bdc1e18eb2c4ba7ca4c7cc3b108
 
 COCOAPODS: 1.11.3

@@ -8,7 +8,6 @@
 import UIKit
 import Lottie
 import CoreLocation
-import SwiftRater
 
 class ResultViewController: UIViewController, CLLocationManagerDelegate {
     @IBOutlet weak var resultLabel: UILabel!
@@ -23,6 +22,7 @@ class ResultViewController: UIViewController, CLLocationManagerDelegate {
         }
     }
     @IBOutlet weak var rerollButton: UIButton!
+    @IBOutlet var mapOptionsButton: UIButton!
     
     private var animationView: LottieAnimationView?
     var alertController: UIAlertController?
@@ -50,12 +50,11 @@ class ResultViewController: UIViewController, CLLocationManagerDelegate {
         }
         self.showLottieAnimation("result_pop", .scaleAspectFill, 1.5)
         self.configureAlert()
-        SwiftRater.incrementSignificantUsageCount()
+        self.configureMapOptionsButton()
     }
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        SwiftRater.check()
     }
     
     func showLottieAnimation(_ name: String, _ contentMode: UIView.ContentMode, _ speed: CGFloat) {
@@ -79,6 +78,14 @@ class ResultViewController: UIViewController, CLLocationManagerDelegate {
         }
     }
     
+    private func configureMapOptionsButton() {
+//        self.mapOptionsButton.titleLabel?.font = UIFont.systemFont(ofSize: 15, weight: .bold)
+        self.mapOptionsButton.layer.shadowColor = UIColor.black.cgColor
+        self.mapOptionsButton.layer.shadowOffset = CGSize(width: 1.5, height: 1.5)
+        self.mapOptionsButton.layer.shadowRadius = 1.5
+        self.mapOptionsButton.layer.shadowOpacity = 0.3
+    }
+    
     private func configureAlert() {
         self.alertController = UIAlertController(title: "위치정보 이용 동의", message: "[설정 - 개인정보 보호 - 위치 서비스]에서\n 앱 위치 접근 권한을 설정해주세요:)", preferredStyle: .alert)
         self.alertController?.addAction(UIAlertAction(title: "확인", style: .default, handler: nil))
@@ -93,8 +100,6 @@ class ResultViewController: UIViewController, CLLocationManagerDelegate {
         guard let foodResult = self.foodResult else { return }
         self.resultLabel.text = foodResult.name
         self.resultLabel.font = UIFont.systemFont(ofSize: 30, weight: .semibold)
-        //self.resultImageView.image = UIImage(name: "fid@\(foodResult.foodID)") ?? UIImage(systemName: "xmark")?.withTintColor(.black)
-        //self.resultImageView.image = UIImage(systemName: "xmark")?.withTintColor(.black)        //temporary image
         if let resultImage = UIImage(named: foodResult.name) {
             self.resultImageView.image = resultImage
         } else {
@@ -124,44 +129,73 @@ class ResultViewController: UIViewController, CLLocationManagerDelegate {
         transition.timingFunction = CAMediaTimingFunction(name: CAMediaTimingFunctionName.easeInEaseOut)
         self.view.window?.layer.add(transition, forKey: kCATransition)
     }
-
-    @IBAction func openMapButton(_ sender: UIButton) {
-        if self.locationManager.authorizationStatus == .authorizedAlways || self.locationManager.authorizationStatus == .authorizedWhenInUse {
-            guard let latitude = self.latitude else { return }
-            guard let longitude = self.longitude else { return }
-            guard let resultFoodName = self.resultLabel?.text else { return }
-            if let encodedString = "kakaomap://search?q=\(resultFoodName)&p=\(latitude),\(longitude)".addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed) {
-                let url = URL(string: encodedString)
-                let appStoreURL = URL(string: "https://itunes.apple.com/app/id304608425?mt=8")!
-                if UIApplication.shared.canOpenURL(URL(string: "kakaomap://")!) {
-                    UIApplication.shared.open(url!, options: [:], completionHandler: nil)
-                } else {
-                    UIApplication.shared.open(appStoreURL)
-                }
-            }
-        } else {
-            guard let alertController = self.alertController else { return }
-            self.present(alertController, animated: true)
-        }
-    }
     
-    @IBAction func openNMapButton(_ sender: UIButton) {
-        if self.locationManager.authorizationStatus == .authorizedAlways || self.locationManager.authorizationStatus == .authorizedWhenInUse {
-            guard let resultFoodName = self.resultLabel?.text else { return }
-            if let encodedString = "nmap://search?query=\(resultFoodName)&appname=com.bammoothe.MealPicker"
-.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed) {
-                let url = URL(string: encodedString)
-                let appStoreURL = URL(string: "http://itunes.apple.com/app/id311867728?mt=8")!
-                if UIApplication.shared.canOpenURL(URL(string: "nmap://")!) {
-                    UIApplication.shared.open(url!, options: [:], completionHandler: nil)
-                } else {
-                    UIApplication.shared.open(appStoreURL)
+    @IBAction func openMapOptionsButton(_ sender: UIButton) {
+        let alert = UIAlertController(title: "주변 맛집 검색!", message: "지도 앱 선택하기", preferredStyle: UIAlertController.Style.alert)
+        let kMapAction = UIAlertAction(title: "카카오맵", style: .default) { _ in
+            if self.locationManager.authorizationStatus == .authorizedAlways || self.locationManager.authorizationStatus == .authorizedWhenInUse {
+                guard let latitude = self.latitude else { return }
+                guard let longitude = self.longitude else { return }
+                guard let resultFoodName = self.resultLabel?.text else { return }
+                if let encodedString = "kakaomap://search?q=\(resultFoodName)&p=\(latitude),\(longitude)".addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed) {
+                    let url = URL(string: encodedString)
+                    let appStoreURL = URL(string: "https://itunes.apple.com/app/id304608425?mt=8")!
+                    if UIApplication.shared.canOpenURL(URL(string: "kakaomap://")!) {
+                        UIApplication.shared.open(url!, options: [:], completionHandler: nil)
+                    } else {
+                        UIApplication.shared.open(appStoreURL)
+                    }
                 }
+            } else {
+                guard let alertController = self.alertController else { return }
+                self.present(alertController, animated: true)
             }
-        } else {
-            guard let alertController = self.alertController else { return }
-            self.present(alertController, animated: true)
         }
+        let nMapAction = UIAlertAction(title: "네이버 지도", style: .default) { _ in
+            if self.locationManager.authorizationStatus == .authorizedAlways || self.locationManager.authorizationStatus == .authorizedWhenInUse {
+                guard let resultFoodName = self.resultLabel?.text else { return }
+                if let encodedString = "nmap://search?query=\(resultFoodName)&appname=com.bammoothe.MealPicker"
+    .addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed) {
+                    let url = URL(string: encodedString)
+                    let appStoreURL = URL(string: "http://itunes.apple.com/app/id311867728?mt=8")!
+                    if UIApplication.shared.canOpenURL(URL(string: "nmap://")!) {
+                        UIApplication.shared.open(url!, options: [:], completionHandler: nil)
+                    } else {
+                        UIApplication.shared.open(appStoreURL)
+                    }
+                }
+            } else {
+                guard let alertController = self.alertController else { return }
+                self.present(alertController, animated: true)
+            }
+        }
+        let aMapAction = UIAlertAction(title: "애플 지도", style: .default) { _ in
+            if self.locationManager.authorizationStatus == .authorizedAlways || self.locationManager.authorizationStatus == .authorizedWhenInUse {
+                guard let latitude = self.latitude else { return }
+                guard let longitude = self.longitude else { return }
+                guard let resultFoodName = self.resultLabel?.text else { return }
+                if let encodedString =
+                    "http://maps.apple.com/?q=\(resultFoodName)&sll=\(latitude),\(longitude)&z=10&t=m"
+    .addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed) {
+                    let url = URL(string: encodedString)
+                    let appStoreURL = URL(string: "http://itunes.apple.com/app/id915056765?mt=8")!
+                    if UIApplication.shared.canOpenURL(URL(string: "https://maps.apple.com/go")!) {
+                        UIApplication.shared.open(url!, options: [:], completionHandler: nil)
+                    } else {
+                        UIApplication.shared.open(appStoreURL)
+                    }
+                }
+            } else {
+                guard let alertController = self.alertController else { return }
+                self.present(alertController, animated: true)
+            }
+        }
+        let cancelAction = UIAlertAction(title: "취소", style: .cancel)
+        alert.addAction(kMapAction)
+        alert.addAction(nMapAction)
+        alert.addAction(aMapAction)
+        alert.addAction(cancelAction)
+        present(alert, animated: true, completion: nil)
     }
     
     @IBAction func returnButtonTap(_ sender: UIButton) {
@@ -195,10 +229,6 @@ class ResultViewController: UIViewController, CLLocationManagerDelegate {
         let activityViewController = UIActivityViewController(activityItems: imagesToShare, applicationActivities: nil)
         activityViewController.popoverPresentationController?.sourceView = self.view
         self.present(activityViewController, animated: true, completion: nil)
-    }
-    
-    @IBAction func rateButtonTap(_ sender: UIButton) {
-        SwiftRater.rateApp()
     }
 }
 

@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="21225" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="21507" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21207"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21505"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="Stack View standard spacing" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
@@ -441,7 +441,7 @@
                                 <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                             </imageView>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="30" translatesAutoresizingMaskIntoConstraints="NO" id="uvw-Ts-kxU">
-                                <rect key="frame" x="72.5" y="198.5" width="269" height="431.5"/>
+                                <rect key="frame" x="72.5" y="201" width="269" height="427"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="뼈해장국" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Yod-cl-4A1">
                                         <rect key="frame" x="82.5" y="0.0" width="104" height="36"/>
@@ -456,41 +456,20 @@
                                         </constraints>
                                     </imageView>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="bSZ-Oz-5U4">
-                                        <rect key="frame" x="86.5" y="365" width="96" height="66.5"/>
+                                        <rect key="frame" x="77.5" y="365" width="114.5" height="62"/>
                                         <subviews>
-                                            <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="2n8-Tm-8CC">
-                                                <rect key="frame" x="0.0" y="0.0" width="96" height="44.5"/>
-                                                <subviews>
-                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="opv-ds-8jG">
-                                                        <rect key="frame" x="0.0" y="0.0" width="48" height="44.5"/>
-                                                        <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                        <state key="normal" title="Button"/>
-                                                        <buttonConfiguration key="configuration" style="plain" image="kakaomap" imagePlacement="top" imagePadding="5">
-                                                            <preferredSymbolConfiguration key="preferredSymbolConfigurationForImage" scale="small"/>
-                                                        </buttonConfiguration>
-                                                        <connections>
-                                                            <action selector="openMapButton:" destination="XJ0-VN-pr3" eventType="touchUpInside" id="jeq-Mf-aIW"/>
-                                                        </connections>
-                                                    </button>
-                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Oeo-AS-Zfn">
-                                                        <rect key="frame" x="48" y="0.0" width="48" height="44.5"/>
-                                                        <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                        <state key="normal" title="Button"/>
-                                                        <buttonConfiguration key="configuration" style="plain" image="nmap" imagePlacement="top" imagePadding="5">
-                                                            <preferredSymbolConfiguration key="preferredSymbolConfigurationForImage" scale="small"/>
-                                                        </buttonConfiguration>
-                                                        <connections>
-                                                            <action selector="openNMapButton:" destination="XJ0-VN-pr3" eventType="touchUpInside" id="6y5-q1-pnF"/>
-                                                        </connections>
-                                                    </button>
-                                                </subviews>
-                                            </stackView>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="주변 맛집 찾기!" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="j2L-ix-Qg5">
-                                                <rect key="frame" x="6" y="49.5" width="84.5" height="17"/>
-                                                <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="14"/>
-                                                <nil key="textColor"/>
-                                                <nil key="highlightedColor"/>
-                                            </label>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="CRx-5K-auZ">
+                                                <rect key="frame" x="0.0" y="0.0" width="114.5" height="62"/>
+                                                <color key="tintColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                                <size key="titleShadowOffset" width="5" height="5"/>
+                                                <state key="normal" title="Button"/>
+                                                <buttonConfiguration key="configuration" style="plain" image="map" catalog="system" imagePlacement="top" title="주변 맛집 찾기!" imagePadding="10">
+                                                    <fontDescription key="titleFontDescription" type="system" weight="semibold" pointSize="15"/>
+                                                </buttonConfiguration>
+                                                <connections>
+                                                    <action selector="openMapOptionsButton:" destination="XJ0-VN-pr3" eventType="touchUpInside" id="f7F-3x-s00"/>
+                                                </connections>
+                                            </button>
                                         </subviews>
                                     </stackView>
                                 </subviews>
@@ -567,6 +546,7 @@
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="mapOptionsButton" destination="CRx-5K-auZ" id="1U1-h7-Xo5"/>
                         <outlet property="rerollButton" destination="gLk-Jb-7bs" id="wmo-bz-kfp"/>
                         <outlet property="resultImageView" destination="lKX-xQ-hSa" id="QCo-a9-lxo"/>
                         <outlet property="resultLabel" destination="Yod-cl-4A1" id="cGN-BD-Ufa"/>
@@ -825,8 +805,7 @@
         <image name="NoImage" width="512" height="512"/>
         <image name="house" catalog="system" width="128" height="104"/>
         <image name="info.circle" catalog="system" width="128" height="123"/>
-        <image name="kakaomap" width="24" height="30.5"/>
-        <image name="nmap" width="24" height="30.5"/>
+        <image name="map" catalog="system" width="128" height="112"/>
         <image name="repeat" catalog="system" width="128" height="98"/>
         <image name="shuffle" catalog="system" width="128" height="95"/>
         <image name="square.and.arrow.up" catalog="system" width="115" height="128"/>

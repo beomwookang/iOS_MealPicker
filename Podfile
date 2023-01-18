@@ -7,6 +7,5 @@ target 'MealPicker' do
 
   # Pods for MealPicker
   pod 'lottie-ios'
-  pod 'SwiftRater'
 
 end
