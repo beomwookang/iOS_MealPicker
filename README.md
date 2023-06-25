@@ -2,6 +2,8 @@
 
 ![forRepo](https://user-images.githubusercontent.com/30224335/205224523-79e485e2-4e39-4592-95a3-dcd7d5dfb66d.png)
 
+**App Store [Link](https://apps.apple.com/kr/app/id1665835076)**
+
 <br>
 
 
